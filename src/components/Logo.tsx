@@ -11,7 +11,7 @@ export function Logo({ className = "h-8 w-auto", withWordmark = false }: Props) 
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="h-full w-auto"
-        aria-label="TariffLens"
+        aria-label="ExportLens"
       >
         {/* Globe circle */}
         <circle cx="16" cy="16" r="11" fill="hsl(var(--primary))" />
@@ -27,7 +27,7 @@ export function Logo({ className = "h-8 w-auto", withWordmark = false }: Props) 
       </svg>
       {withWordmark && (
         <span className="text-base font-semibold tracking-tight text-foreground">
-          TariffLens
+          ExportLens
         </span>
       )}
     </span>

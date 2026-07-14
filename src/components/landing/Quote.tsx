@@ -33,7 +33,7 @@ export function Quote() {
                 },
                 {
                   problem: "No dollar numbers",
-                  detail: "ChatGPT gives you a paragraph. TariffLens gives you the exact dollar cost on your specific shipment value."
+                  detail: "ChatGPT gives you a paragraph. ExportLens gives you the duty, the documents, and the detention risks for your exact product."
                 },
                 {
                   problem: "No historical context",
