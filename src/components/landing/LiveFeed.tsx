@@ -6,6 +6,7 @@ type TariffEntry = {
   hs_code: string;
   product_name: string;
   destination_country: string;
+  origin_country: string | null;
   effective_rate: number;
   retaliation_rate: number;
   retaliation_note: string;
@@ -64,6 +65,7 @@ export function LiveFeed() {
           .from("tariff_rates")
           .select("hs_code,product_name,destination_country,origin_country,effective_rate,retaliation_rate,retaliation_note,synced_at")
           .gt("retaliation_rate", 0)
+          .eq("destination_country", "United States")
           .order("retaliation_rate", { ascending: false })
           .limit(8),
         supabase
@@ -120,7 +122,7 @@ export function LiveFeed() {
           <div>
             <div className="text-xs font-medium uppercase tracking-wider text-primary mb-2">Live tariff intelligence</div>
             <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
-              Active tariff exposure across trade corridors
+              Active US duties on goods entering the country
             </h2>
           </div>
           <div className="flex items-center gap-2 flex-wrap">
@@ -164,7 +166,7 @@ export function LiveFeed() {
                 const sev = severityFor(t.retaliation_rate);
                 return (
                   <div
-                    key={`${t.hs_code}-${t.destination_country}`}
+                    key={`${t.hs_code}-${t.origin_country ?? "all"}`}
                     className={`flex items-center justify-between gap-3 rounded-lg border px-4 py-3 ${
                       sev === "high" ? "border-destructive/30 bg-destructive-soft" :
                       sev === "medium" ? "border-warning/30 bg-warning-soft" :
@@ -178,7 +180,7 @@ export function LiveFeed() {
                       <div className="min-w-0">
                         <div className="text-sm font-medium text-foreground truncate">{t.product_name}</div>
                         <div className="text-xs text-muted-foreground truncate">
-                          → {t.destination_country}
+                          {t.origin_country ? `from ${t.origin_country} → United States` : "all origins → United States"}
                         </div>
                       </div>
                     </div>
@@ -264,13 +266,13 @@ export function LiveFeed() {
             <div className="grid grid-cols-2 gap-2 mt-3">
               <div className="rounded-lg border border-border bg-card p-3 text-center">
                 <div className="text-xl font-bold text-foreground">{tariffs.filter(t => t.retaliation_rate > 0).length}</div>
-                <div className="text-[10px] text-muted-foreground mt-0.5">Active retaliations</div>
+                <div className="text-[10px] text-muted-foreground mt-0.5">Active duty actions</div>
               </div>
               <div className="rounded-lg border border-border bg-card p-3 text-center">
                 <div className="text-xl font-bold text-destructive">
                   +{tariffs.length > 0 ? Math.max(...tariffs.map(t => t.retaliation_rate)) : 0}%
                 </div>
-                <div className="text-[10px] text-muted-foreground mt-0.5">Peak additional duty tracked</div>
+                <div className="text-[10px] text-muted-foreground mt-0.5">Peak additional US duty tracked</div>
               </div>
             </div>
           </div>

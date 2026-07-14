@@ -5,6 +5,7 @@ import { Radio, TrendingDown } from "lucide-react";
 type TariffEntry = {
   product_name: string;
   destination_country: string;
+  origin_country: string | null;
   effective_rate: number;
   retaliation_rate: number;
 };
@@ -17,8 +18,9 @@ export function LiveTicker() {
     async function load() {
       const { data } = await supabase
         .from("tariff_rates")
-        .select("product_name,destination_country,effective_rate,retaliation_rate")
+        .select("product_name,destination_country,origin_country,effective_rate,retaliation_rate")
         .gt("retaliation_rate", 0)
+        .eq("destination_country", "United States")
         .order("retaliation_rate", { ascending: false });
       if (data) setItems(data);
       setLastSync(new Date().toLocaleTimeString());
@@ -39,7 +41,7 @@ export function LiveTicker() {
         {/* Label */}
         <div className="flex-shrink-0 flex items-center gap-2 px-4 py-2.5 border-r border-border bg-primary text-primary-foreground z-10">
           <Radio className="h-3 w-3 animate-pulse" />
-          <span className="text-[11px] font-semibold uppercase tracking-wider whitespace-nowrap">Live Tariffs</span>
+          <span className="text-[11px] font-semibold uppercase tracking-wider whitespace-nowrap">Live US duties</span>
         </div>
 
         {/* Scrolling tape */}
@@ -49,9 +51,9 @@ export function LiveTicker() {
               <span key={i} className="inline-flex items-center gap-2 px-5 py-2.5 border-r border-border/40 text-sm">
                 <TrendingDown className="h-3 w-3 text-destructive flex-shrink-0" />
                 <span className="font-medium text-foreground">{item.product_name}</span>
-                <span className="text-muted-foreground">→ {item.destination_country}</span>
+                <span className="text-muted-foreground">{item.origin_country ? `from ${item.origin_country}` : "entering the US"}</span>
                 <span className="font-mono font-bold text-destructive">+{item.retaliation_rate}%</span>
-                <span className="text-[11px] text-muted-foreground">additional duty</span>
+                <span className="text-[11px] text-muted-foreground">additional US duty</span>
               </span>
             ))}
           </div>
