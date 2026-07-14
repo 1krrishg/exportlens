@@ -1,0 +1,26 @@
+hs_code,product_name,destination_country,destination_code,mfn_rate,retaliation_rate,effective_rate,retaliation_note,last_updated
+1201,Soybeans,China,CN,3,25,28,China retaliatory tariff on US agricultural goods (2018 maintained 2025),2025-11-01
+2208,Bourbon / American Whiskey,China,CN,10,25,35,China retaliatory tariff on US spirits,2025-11-01
+8803,Aircraft parts,China,CN,5,25,30,China retaliatory tariff on US manufactured goods,2025-11-01
+1005,Corn / Maize,China,CN,1,25,26,China retaliatory tariff on US agricultural goods,2025-11-01
+8542,Semiconductors / ICs,China,CN,0,25,25,China retaliatory tariff on US tech goods,2025-11-01
+0207,Poultry / Chicken,China,CN,10,25,35,China retaliatory tariff on US food products,2025-11-01
+2208,Bourbon / American Whiskey,European Union,EU,10,25,35,EU retaliatory tariff on US spirits (steel/aluminum dispute),2025-06-01
+0201,Beef,European Union,EU,12,25,37,EU retaliatory tariff on US agricultural goods,2025-06-01
+0402,Dairy / Milk powder,European Union,EU,7,25,32,EU retaliatory tariff on US dairy,2025-06-01
+8542,Semiconductors / ICs,European Union,EU,0,0,0,No retaliation on semiconductors,2025-06-01
+8703,Passenger vehicles / Cars,European Union,EU,6.5,25,31.5,EU retaliatory tariff on US auto goods,2025-06-01
+8703,Passenger vehicles / Cars,Canada,CA,0,25,25,Canada retaliatory tariff (steel/aluminum dispute),2025-06-01
+0201,Beef,Canada,CA,0,10,10,Canada retaliatory tariff on US agricultural products,2025-06-01
+2208,Bourbon / American Whiskey,Canada,CA,0,10,10,Canada retaliatory tariff on US spirits,2025-06-01
+1201,Soybeans,Canada,CA,0,0,0,No retaliation - USMCA exemption,2025-06-01
+1201,Soybeans,Japan,JP,0,0,0,No retaliation - US-Japan Trade Agreement,2025-06-01
+2208,Bourbon / American Whiskey,Japan,JP,0,0,0,No retaliation - US-Japan Trade Agreement,2025-06-01
+0201,Beef,Japan,JP,9,0,9,Standard MFN rate only no retaliation,2025-06-01
+8542,Semiconductors / ICs,Japan,JP,0,0,0,No tariff on semiconductors,2025-06-01
+1005,Corn / Maize,Mexico,MX,0,20,20,Mexico retaliatory tariff on US corn,2025-06-01
+0201,Beef,Mexico,MX,0,20,20,Mexico retaliatory tariff on US agricultural goods,2025-06-01
+1201,Soybeans,Mexico,MX,0,0,0,USMCA - no tariff,2025-06-01
+8542,Semiconductors / ICs,India,IN,0,0,0,No retaliation on semiconductors,2025-06-01
+0201,Beef,India,IN,30,0,30,High MFN rate no retaliation,2025-06-01
+2208,Bourbon / American Whiskey,India,IN,150,0,150,India baseline tariff on spirits - very high MFN,2025-06-01
