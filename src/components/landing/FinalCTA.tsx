@@ -25,7 +25,7 @@ export function FinalCTA() {
           </Button>
         </div>
         <p className="text-xs text-muted-foreground mt-6">
-          USITC HTS catalog (262k rows, 1998–2026) · WTO Timeseries API · CBP CROSS rulings · Live retaliation data
+          USITC HTS catalog (262k rows, 1998–2026) · FDA import alerts · CBP CROSS rulings · AD/CVD orders
         </p>
       </div>
     </section>

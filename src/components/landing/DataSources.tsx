@@ -7,10 +7,10 @@ export function DataSources() {
       desc: "US International Trade Commission official tariff schedule. Every MFN rate, every year, going back to 1998.",
     },
     {
-      name: "WTO Timeseries API",
-      detail: "MFN · Bound · Preferential · Trade Flows",
+      name: "FDA Import Alerts",
+      detail: "Detention-without-exam lists",
       badge: "Official",
-      desc: "We pull 4 WTO indicators per query: applied MFN rate, legal bound rate ceiling, FTA preferential rate, and bilateral trade volume for the exact corridor.",
+      desc: "The FDA's live list of products detained at US ports without physical exam — spices, shrimp, ayurvedic products from India are on several. We tell you if yours is.",
     },
     {
       name: "CBP CROSS",
@@ -19,16 +19,16 @@ export function DataSources() {
       desc: "US Customs and Border Protection's public ruling database. When we classify your product, we cite the actual ruling number.",
     },
     {
-      name: "Live retaliation data",
-      detail: "Scraped daily · 25+ measures",
-      badge: "Live",
-      desc: "China's 125% on US goods, EU's retaliatory measures, Canada's 25% — tracked and updated when new measures land.",
+      name: "AD/CVD Orders",
+      detail: "Commerce · ITC active orders",
+      badge: "Official",
+      desc: "Anti-dumping and countervailing duty orders on Indian goods — shrimp, steel, quartz and more. These can add 3–200% on top of the normal duty.",
     },
     {
       name: "US Agency Compliance",
-      detail: "FDA · CPSC · EPA · FCC · USDA",
+      detail: "FDA · CPSC · USDA · EPA · FWS",
       badge: "Official",
-      desc: "Non-tariff requirements that block shipments: FDA prior notice, CPSC testing certificates, EPA emissions standards, FCC authorization, USDA phytosanitary rules.",
+      desc: "Non-tariff requirements that block shipments: FDA prior notice, FSVP, CPSC testing certificates, USDA phytosanitary rules, Lacey Act declarations.",
     },
   ];
 

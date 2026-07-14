@@ -32,8 +32,8 @@ export function NavBar() {
           )}
           <Button asChild size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground flex-shrink-0">
             <Link to="/simulate" className="whitespace-nowrap">
-              <span className="hidden sm:inline">Simulate a shipment</span>
-              <span className="sm:hidden">Simulate</span>
+              <span className="hidden sm:inline">Check my shipment</span>
+              <span className="sm:hidden">Check</span>
             </Link>
           </Button>
         </div>
