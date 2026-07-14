@@ -107,6 +107,30 @@ const DIRECT_LOOKUP: Record<string, string[]> = {
   olive: ["1509"], "olive oil": ["1509"], wine: ["2204"], beer: ["2203"],
   bourbon: ["2208"], whiskey: ["2208"], spirits: ["2208"],
 
+  // Indian export staples
+  basmati: ["1006"], "basmati rice": ["1006"],
+  turmeric: ["0910"], haldi: ["0910"], ginger: ["0910"], saffron: ["0910"],
+  cardamom: ["0908"], nutmeg: ["0908"], clove: ["0907"], cloves: ["0907"],
+  cumin: ["0909"], jeera: ["0909"], coriander: ["0909"], fennel: ["0909"],
+  pepper: ["0904"], chili: ["0904"], chilli: ["0904"], paprika: ["0904"],
+  spice: ["0910", "0904", "0909"], spices: ["0910", "0904", "0909"], masala: ["0910", "0904", "0909"],
+  cashew: ["0801"], cashews: ["0801"], "cashew nuts": ["0801"],
+  "guar gum": ["1302"], guar: ["1302"],
+  prawn: ["0306"], prawns: ["0306"],
+  mango: ["0804"], "mango pulp": ["2007"],
+  ayurvedic: ["3004", "2106"], ayurveda: ["3004", "2106"], "herbal supplement": ["2106"],
+  saree: ["6204", "5407"], sari: ["6204", "5407"], kurta: ["6204", "6203"],
+  "bed linen": ["6302"], "bed sheets": ["6302"], bedsheet: ["6302"], bedsheets: ["6302"], towel: ["6302"], towels: ["6302"],
+  carpet: ["5701", "5703"], carpets: ["5701", "5703"], rug: ["5701", "5703"], rugs: ["5701", "5703"], durrie: ["5702"],
+  "cotton yarn": ["5205"], yarn: ["5205"],
+  handicraft: ["4420", "8306"], handicrafts: ["4420", "8306"],
+  "brass handicrafts": ["8306"], brass: ["8306", "7419"], "wood carving": ["4420"],
+  "leather bag": ["4202"], "leather bags": ["4202"], "leather wallet": ["4202"], handbag: ["4202"], handbags: ["4202"],
+  "leather footwear": ["6403"],
+  "gold jewelry": ["7113"], "gold jewellery": ["7113"], "silver jewelry": ["7113"], "silver jewellery": ["7113"],
+  "imitation jewelry": ["7117"], "imitation jewellery": ["7117"],
+  granite: ["6802", "2516"], marble: ["6802", "2515"],
+
   // Metals & materials
   steel: ["7208", "7210", "7214"], iron: ["7214"],
   aluminum: ["7604", "7606"], aluminium: ["7604", "7606"],
@@ -299,7 +323,7 @@ async function identifyHeadings(description: string): Promise<string[]> {
   // Keys too generic to trust inside longer phrases — exact-match only.
   // "coconut oil" must NOT hit oil→crude petroleum; "gas grill" must NOT hit gas→LNG;
   // "mobile home" must NOT hit mobile→smartphones; "hard hat" must NOT hit hard→computers.
-  const EXACT_ONLY = new Set(["oil", "gas", "hard", "switch", "mobile", "parts", "electric", "device", "container", "panel", "glove", "mask", "engine", "memory", "chip", "chips", "table", "suit"]);
+  const EXACT_ONLY = new Set(["oil", "gas", "hard", "switch", "mobile", "parts", "electric", "device", "container", "panel", "glove", "mask", "engine", "memory", "chip", "chips", "table", "suit", "yarn", "brass", "ginger", "pepper"]);
   if (DIRECT_LOOKUP[lower]) return DIRECT_LOOKUP[lower];
 
   // Sort keys by length descending so longer/more-specific keys match first
