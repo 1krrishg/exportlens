@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { NavBar } from "@/components/landing/NavBar";
 import { Footer } from "@/components/landing/Footer";
 import { supabase } from "@/integrations/supabase/client";
+import { UsCompliancePanel } from "@/components/results/UsCompliancePanel";
 import { useToast } from "@/hooks/use-toast";
 
 type Scenario = {
@@ -558,6 +559,15 @@ export default function ResultsPage() {
               })}
             </div>
           </div>
+        )}
+
+        {/* US border compliance: landed cost + curated checklists */}
+        {result.destination_country === "United States" && (
+          <UsCompliancePanel
+            hsCode={result.hs_code ?? state?.input?.hsCode ?? ""}
+            shipmentValue={result.shipment_value ?? 0}
+            effectiveRate={result.effective_rate ?? 0}
+          />
         )}
 
         {/* Prediction */}
