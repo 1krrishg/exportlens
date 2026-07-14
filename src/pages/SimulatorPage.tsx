@@ -51,21 +51,21 @@ export default function SimulatorPage() {
 
   const [hsCode, setHsCode] = useState("");
   const [productName, setProductName] = useState("");
-  const [originCountry, setOriginCountry] = useState("United States");
-  const [destination, setDestination] = useState("");
+  const [originCountry, setOriginCountry] = useState("India");
+  const [destination, setDestination] = useState("United States");
 
   // When trade mode switches, reset origin/destination to sensible defaults
   const handleTradeModeChange = (tm: TradeMode) => {
     setTradeMode(tm);
     setExtractedPreview(null); // preview shows countries that no longer match the form
     if (tm === "importer") {
-      // Importing TO the US — origin should be the foreign country, not the US
+      // US importer — origin is the foreign country
       setOriginCountry("");
       setDestination("United States");
     } else {
-      // Exporting FROM the US
-      setOriginCountry("United States");
-      setDestination("");
+      // Exporter shipping to the US
+      setOriginCountry("India");
+      setDestination("United States");
     }
   };
   const [shipmentValue, setShipmentValue] = useState("");
@@ -598,9 +598,9 @@ export default function SimulatorPage() {
       <main className="container mx-auto px-5 sm:px-6 py-12 max-w-2xl">
 
         <div className="mb-8">
-          <div className="text-xs font-medium uppercase tracking-wider text-primary mb-2">Tariff simulator</div>
-          <h1 className="text-2xl sm:text-3xl font-semibold text-foreground mb-2">Simulate a shipment</h1>
-          <p className="text-muted-foreground text-sm">Search any of 12,788 products or upload a trade document. We combine 29 years of USITC rate history with live scraped tariff data.</p>
+          <div className="text-xs font-medium uppercase tracking-wider text-primary mb-2">Shipment check</div>
+          <h1 className="text-2xl sm:text-3xl font-semibold text-foreground mb-2">Check my shipment</h1>
+          <p className="text-muted-foreground text-sm">Type your product or upload a trade document. We return the US duty, agency requirements, documents, and detention risks for your exact goods.</p>
         </div>
 
         {/* Importer / Exporter toggle */}
@@ -613,15 +613,15 @@ export default function SimulatorPage() {
                 onClick={() => handleTradeModeChange(tm)}
                 className={`flex-1 py-2.5 px-3 rounded-lg border text-sm font-medium transition-colors ${tradeMode === tm ? "border-primary bg-primary-soft text-primary" : "border-border text-muted-foreground hover:text-foreground"}`}
               >
-                <span className="hidden sm:inline">{tm === "exporter" ? "🚢 Exporter — shipping goods out" : "📦 Importer — bringing goods in"}</span>
-                <span className="sm:hidden">{tm === "exporter" ? "🚢 Exporter" : "📦 Importer"}</span>
+                <span className="hidden sm:inline">{tm === "exporter" ? "🚢 Exporter — shipping to the US" : "📦 US importer — bringing goods in"}</span>
+                <span className="sm:hidden">{tm === "exporter" ? "🚢 Exporter" : "📦 US importer"}</span>
               </button>
             ))}
           </div>
           <p className="text-xs text-muted-foreground mt-2">
             {tradeMode === "exporter"
-              ? "See what the destination country charges on your goods — live retaliation rates + 29 years of duty history."
-              : "See what the destination country charges on goods you're shipping in — MFN duty + any additional tariffs."}
+              ? "See what US customs will charge and require on your goods — duty, agency checklists, and detention risks before you ship."
+              : "See what you'll owe and file on goods entering the US — MFN duty, AD/CVD exposure, and agency requirements."}
           </p>
         </div>
 
