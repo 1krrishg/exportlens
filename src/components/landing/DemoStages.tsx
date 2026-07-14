@@ -31,33 +31,33 @@ export function DemoStages() {
           <Stage
             icon={<Search className="h-4 w-4 text-primary" />}
             num="03"
-            title="29 years of MFN rate history, plus what's live right now"
-            desc="We pull the official MFN duty rate from the USITC HTS catalog for every year from 1998 to 2026 — that's the baseline rate every WTO member pays. Then we hit the WTO Timeseries API (indicator HS_A_0010) to get the current official rate for the destination country. On top of that, live retaliatory tariffs get layered in: China's Section 301 response, the EU's rebalancing measures, Canada's 25% across-the-board. The effective rate you see is what they're actually charging today."
-            source="USITC HTS 1998–2026 · WTO Timeseries API (HS_A_0010) · Live retaliation scraping"
+            title="The real US duty — base rate plus anything stacked on top"
+            desc="We pull the official duty rate from the USITC HTS catalog — 29 years of history, 1998 to 2026 — then layer on whatever else applies to goods from India: anti-dumping and countervailing duty orders, Section 232 steel and aluminum measures, and any active tariff actions. The effective rate you see is what US customs will actually charge, not just the headline MFN number."
+            source="USITC HTS 1998–2026 · Commerce/ITC AD/CVD orders · active tariff actions"
           />
           <Arrow />
           <Stage
             icon={<BarChart3 className="h-4 w-4 text-primary" />}
             num="04"
-            title="The dollar cost on your specific shipment"
-            desc="Percentages don't mean much in isolation. We calculate three scenarios against your exact shipment value: today's effective rate (MFN + any active retaliation), a worst-case based on the biggest single-year rate jump this product has seen in the USITC history, and the best alternative country from WTO tariff data. If an FTA applies — USMCA, KORUS, CPTPP, AUSFTA — we pull the preferential rate from WTO indicator HS_A_0020 and show the saving."
-            source="USITC hts_volatility · WTO HS_A_0020 preferential rates · FTA corridors"
+            title="The full landed cost on your specific shipment"
+            desc="Percentages don't mean much in isolation. We compute the true cost at the border against your exact shipment value: duty, the merchandise processing fee, the harbor maintenance fee — the number your buyer's customs broker will actually see. Then every US agency requirement for your product: FDA prior notice, FSVP, CPSC certificates, USDA phytosanitary rules, with the documents checklist and official government links."
+            source="19 CFR 24 fee schedules · FDA · CPSC · USDA · FWS curated checklists"
           />
           <Arrow />
           <Stage
             icon={<TrendingUp className="h-4 w-4 text-primary" />}
             num="05"
-            title="Where rates are likely to go in the next 6 to 12 months"
-            desc="The prediction is grounded in what actually happened before on this specific HS code: which year the rate last spiked, by how many percentage points, whether it recovered. We surface the historical volatility pattern alongside current geopolitical signals so you can see what tends to follow situations like this one."
-            source="USITC rate_history · hts_volatility table · 29-year spike analysis"
+            title="Why shipments like yours get stopped — and how to avoid it"
+            desc="We check your product against the FDA's import alert lists — the products detained at US ports without physical examination — and surface the actual refusal reasons for your category: Salmonella in spices, unapproved color additives, missing prior notice. If your goods are on a detention list, you find out here, not at the port."
+            source="FDA Import Alerts · FDA import refusal database · CBP hold patterns"
           />
           <Arrow />
           <Stage
             icon={<Lightbulb className="h-4 w-4 text-primary" />}
             num="06"
-            title="One action with a dollar figure attached"
-            desc="Reroute to a lower-tariff country, accelerate the shipment before a rate change, or hold and wait. One recommendation. One number. No paragraph of maybes."
-            source="Groq llama-3.3-70b · grounded in the rate data above"
+            title="One clear answer before you commit"
+            desc="Get the lab test before shipping, fix the label, file the prior notice, arrange an FSVP importer — whatever stands between your shipment and clearance, stated plainly with the cost of getting it wrong. One recommendation. One number. No paragraph of maybes."
+            source="Groq llama-3.3-70b · grounded in the duty and compliance data above"
           />
         </div>
       </div>
