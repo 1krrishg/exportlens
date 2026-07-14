@@ -2,22 +2,22 @@ const stats = [
   {
     value: "12,788",
     label: "Products in the USITC HTS catalog",
-    sub: "From soybeans (HS 1201) to semiconductors (HS 8542)",
+    sub: "From turmeric (HS 0910) to auto parts (HS 8708)",
   },
   {
     value: "29 yrs",
-    label: "Of official MFN rate records",
+    label: "Of official US duty records",
     sub: "USITC data going back to 1998 — every rate change on record",
   },
   {
-    value: "25+",
-    label: "Active retaliatory measures tracked",
-    sub: "China 25% on US ag, EU 25% on steel/whiskey, Canada 25%, India 20-100%",
+    value: "$87B+",
+    label: "Indian goods entering the US every year",
+    sub: "India's largest export market — and the strictest border to clear",
   },
   {
-    value: "$180B+",
-    label: "US export value under active retaliation",
-    sub: "Based on WTO trade flow data and live retaliatory tariff coverage",
+    value: "1,000s",
+    label: "Of Indian shipments refused yearly",
+    sub: "FDA import refusals for spices, shrimp, drugs — most were preventable paperwork",
   },
 ];
 

@@ -1,14 +1,14 @@
 import { AlertTriangle, TrendingDown, CheckCircle2 } from "lucide-react";
 
 const examples = [
-  { product: "Soybeans", hs: "1201", dest: "China", mfn: 0, retaliation: 25, effective: 25, severity: "high", risk: 78, note: "2018 spike, held since" },
-  { product: "Bourbon / Whiskey", hs: "2208", dest: "EU", mfn: 10, retaliation: 25, effective: 35, severity: "high", risk: 72, note: "Steel/aluminum dispute" },
-  { product: "Beef", hs: "0201", dest: "EU", mfn: 12, retaliation: 25, effective: 37, severity: "high", risk: 81, note: "USMCA non-compliant" },
-  { product: "Corn / Maize", hs: "1005", dest: "Mexico", mfn: 0, retaliation: 20, effective: 20, severity: "medium", risk: 54, note: "Post-USMCA tension" },
-  { product: "Passenger Cars", hs: "8703", dest: "EU", mfn: 2, retaliation: 25, effective: 27, severity: "high", risk: 69, note: "Section 232 threat" },
-  { product: "Semiconductors", hs: "8542", dest: "Japan", mfn: 0, retaliation: 0, effective: 0, severity: "none", risk: 12, note: "FTA — no retaliation" },
-  { product: "Aircraft Parts", hs: "8803", dest: "China", mfn: 5, retaliation: 25, effective: 30, severity: "high", risk: 76, note: "Section 301 List 3" },
-  { product: "Soybeans", hs: "1201", dest: "Japan", mfn: 0, retaliation: 0, effective: 0, severity: "none", risk: 8, note: "Best alt market" },
+  { product: "Frozen Shrimp", hs: "0306", dest: "United States", mfn: 0, retaliation: 5, effective: 5, severity: "high", risk: 74, note: "AD order A-533-840 + FDA Import Alert 16-35" },
+  { product: "Turmeric & Spices", hs: "0910", dest: "United States", mfn: 0, retaliation: 0, effective: 0, severity: "medium", risk: 62, note: "FDA Import Alert 99-08 — Salmonella detentions" },
+  { product: "Ayurvedic Products", hs: "3004", dest: "United States", mfn: 0, retaliation: 0, effective: 0, severity: "high", risk: 79, note: "FDA detentions for lead and unapproved drug claims" },
+  { product: "Bed Linen", hs: "6302", dest: "United States", mfn: 12, retaliation: 0, effective: 12, severity: "medium", risk: 38, note: "FTC fiber labeling holds are common" },
+  { product: "Steel Pipe", hs: "7306", dest: "United States", mfn: 0, retaliation: 30, effective: 30, severity: "high", risk: 71, note: "AD/CVD orders + Section 232 steel measures" },
+  { product: "Gold Jewelry", hs: "7113", dest: "United States", mfn: 6, retaliation: 0, effective: 6, severity: "none", risk: 18, note: "Straightforward entry — FTC marking rules apply" },
+  { product: "Basmati Rice", hs: "1006", dest: "United States", mfn: 1, retaliation: 0, effective: 1, severity: "medium", risk: 41, note: "USDA/APHIS phytosanitary + FDA Prior Notice" },
+  { product: "Cotton T-shirts", hs: "6109", dest: "United States", mfn: 17, retaliation: 0, effective: 17, severity: "medium", risk: 33, note: "High duty but predictable — flammability applies" },
 ];
 
 export function RiskGallery() {
@@ -16,11 +16,11 @@ export function RiskGallery() {
     <section id="scenarios" className="py-16 sm:py-20 md:py-28 border-b border-border">
       <div className="container mx-auto px-5 sm:px-6">
         <div className="max-w-2xl mb-10">
-          <div className="text-xs font-medium uppercase tracking-wider text-primary mb-3">Live tariff exposure map</div>
+          <div className="text-xs font-medium uppercase tracking-wider text-primary mb-3">India → US exposure map</div>
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground leading-[1.1]">
-            Real tariff rates across corridors right now.
+            What US customs charges on India's top exports right now.
           </h2>
-          <p className="text-muted-foreground mt-3 text-sm">Live-scraped retaliatory data + WTO official MFN rates. Risk scores from 29-year USITC rate volatility analysis.</p>
+          <p className="text-muted-foreground mt-3 text-sm">USITC official duty rates + active AD/CVD orders + FDA import alerts. Risk scores reflect detention likelihood at the port.</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {examples.map((e) => (
@@ -39,7 +39,7 @@ export function RiskGallery() {
               {/* Risk score mini bar */}
               <div className="mb-3">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[9px] text-muted-foreground uppercase tracking-wider">Risk</span>
+                  <span className="text-[9px] text-muted-foreground uppercase tracking-wider">Detention risk</span>
                   <span className={`text-[10px] font-mono font-bold ${e.risk >= 60 ? "text-destructive" : e.risk >= 30 ? "text-warning" : "text-success"}`}>{e.risk}/100</span>
                 </div>
                 <div className="h-1 bg-muted rounded-full overflow-hidden">
@@ -53,7 +53,7 @@ export function RiskGallery() {
                   <div className="font-mono font-medium text-foreground">{e.mfn}%</div>
                 </div>
                 <div>
-                  <div className="text-muted-foreground">Retaliation</div>
+                  <div className="text-muted-foreground">Extra duty</div>
                   <div className={`font-mono font-medium ${e.retaliation > 0 ? "text-destructive" : "text-success"}`}>{e.retaliation > 0 ? `+${e.retaliation}%` : "None"}</div>
                 </div>
                 <div>

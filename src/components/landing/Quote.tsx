@@ -6,18 +6,18 @@ export function Quote() {
           <div className="space-y-8 mb-10">
             <div>
               <blockquote className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground leading-snug mb-4">
-                "We didn't know China had a 25% retaliatory tariff on our soybeans until we were already committed to the shipment. That cost us $125,000 in margin on a single load."
+                "Our spice shipment sat at the Port of Newark for three weeks because we didn't file FDA Prior Notice correctly. Demurrage, storage, and a furious buyer — one missing form cost us more than the freight."
               </blockquote>
               <div className="text-sm text-muted-foreground">
-                <span className="font-medium text-foreground">Midwest soybean exporter</span> · $12M annual export volume
+                <span className="font-medium text-foreground">Spice exporter, Kerala</span> · shipping to the US since 2019
               </div>
             </div>
             <div className="border-t border-border pt-8">
               <blockquote className="text-xl sm:text-2xl font-semibold text-foreground leading-snug mb-4">
-                "We manufacture in India and import to the US. We had no idea what the MFN duty rate was on our product category or whether we qualified for a lower rate. The first time we checked, we were overpaying by 4 percentage points."
+                "Our CHA told us the duty rate after the goods landed. Nobody told us our product category was under an anti-dumping order — the bill was triple what we quoted the buyer."
               </blockquote>
               <div className="text-sm text-muted-foreground">
-                <span className="font-medium text-foreground">Indian textile manufacturer, US importer</span> · $3M annual import volume
+                <span className="font-medium text-foreground">Steel products exporter, Gujarat</span> · $3M annual US volume
               </div>
             </div>
           </div>
