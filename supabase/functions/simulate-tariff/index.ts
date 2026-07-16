@@ -416,6 +416,17 @@ function computeRegulatoryFlags(
     }
   }
 
+  // Baseline: every US import has marking/invoice/bond obligations. When no agency-specific
+  // gate applies, say that explicitly instead of showing an empty section.
+  if (destinationCountry === "United States" && flags.length === 0) {
+    flags.push({
+      type: "COMPLIANCE",
+      title: "CBP Entry Basics — No Special Agency Gate for This Product",
+      detail: "No FDA/CPSC/FCC/USDA-style pre-market requirement applies to this product category. Standard CBP entry rules still do: every article must bear country-of-origin marking (\"Made in India\") legible to the end buyer, the commercial invoice must show accurate value and full product description, and formal entries (over $2,500) require a customs bond. Anti-dumping/countervailing duty scope and intellectual-property (trademark) enforcement apply to all goods.",
+      authority: "19 USC 1304 (marking) · 19 CFR Part 141 (entry) · 19 CFR Part 113 (bonds)",
+    });
+  }
+
   return flags;
 }
 function isSteel(hs4: string): boolean { return hs4.startsWith("72") || hs4.startsWith("73"); }

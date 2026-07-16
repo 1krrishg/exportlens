@@ -192,5 +192,101 @@
       "CPSC Flammability + FTC Textile Labeling Required"
     ],
     "issues": []
+  },
+  "6204|all": {
+    "product": "Women's Suits/Dresses",
+    "origin": "India",
+    "tested_hs": "62040000",
+    "seconds": 6.5,
+    "effective_rate": 11.1,
+    "extra_duty": 0,
+    "flags": [
+      "CPSC Flammability + FTC Textile Labeling Required"
+    ],
+    "issues": []
+  },
+  "6402|all": {
+    "product": "Footwear",
+    "origin": "India",
+    "tested_hs": "64020000",
+    "seconds": 5.3,
+    "effective_rate": 9.8,
+    "extra_duty": 0,
+    "flags": [
+      "CPSC"
+    ],
+    "issues": []
+  },
+  "6404|all": {
+    "product": "Footwear (textile upper)",
+    "origin": "India",
+    "tested_hs": "64040000",
+    "seconds": 4.5,
+    "effective_rate": 18.8,
+    "extra_duty": 0,
+    "flags": [
+      "CPSC"
+    ],
+    "issues": []
+  },
+  "6404|China": {
+    "product": "Footwear (textile upper)",
+    "origin": "China",
+    "tested_hs": "64040000",
+    "seconds": 4.8,
+    "effective_rate": 26.3,
+    "extra_duty": 15,
+    "flags": [
+      "CPSC"
+    ],
+    "issues": []
+  },
+  "6810|India": {
+    "product": "Quartz Surface Products",
+    "origin": "India",
+    "tested_hs": "68100000",
+    "seconds": 6.6,
+    "effective_rate": 7.3,
+    "extra_duty": 10,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "6907|all": {
+    "product": "Ceramic Tiles",
+    "origin": "India",
+    "tested_hs": "69070000",
+    "seconds": 6.9,
+    "effective_rate": 9.4,
+    "extra_duty": 0,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "6907|China": {
+    "product": "Ceramic Tiles",
+    "origin": "China",
+    "tested_hs": "69070000",
+    "seconds": 8.8,
+    "effective_rate": 349.4,
+    "extra_duty": 680,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "7113|all": {
+    "product": "Jewelry/Articles of precious metal",
+    "origin": "India",
+    "tested_hs": "71130000",
+    "seconds": 5.3,
+    "effective_rate": 6.6,
+    "extra_duty": 0,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
   }
 }
