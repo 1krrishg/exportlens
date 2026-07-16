@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { NavBar } from "@/components/landing/NavBar";
 import { Footer } from "@/components/landing/Footer";
 import { supabase } from "@/integrations/supabase/client";
-import { UsCompliancePanel } from "@/components/results/UsCompliancePanel";
+import { ComplianceChecklist, ComplianceVerdict, LandedCostCard, useComplianceProfile } from "@/components/results/UsCompliancePanel";
 import { useToast } from "@/hooks/use-toast";
 
 type Scenario = {
@@ -97,6 +97,8 @@ export default function ResultsPage() {
   const displayProductName = state?.input?.productQuery || result?.product_name || "Product";
   const isImporter = tradeMode === "importer";
   const classification = state?.classification ?? null;
+  const isUsBound = result?.destination_country === "United States";
+  const complianceProfile = useComplianceProfile(result?.hs_code ?? state?.input?.hsCode ?? "");
   const [email, setEmail] = useState("");
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
@@ -197,7 +199,7 @@ export default function ResultsPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <NavBar />
-      <main className="container mx-auto px-5 sm:px-6 py-10 max-w-3xl space-y-5">
+      <main className="container mx-auto px-5 sm:px-6 py-10 max-w-6xl space-y-5">
 
         {/* Header */}
         <div>
@@ -220,7 +222,31 @@ export default function ResultsPage() {
           </div>
         </div>
 
-        {/* THE BIG NUMBER — tariff cost, front and center */}
+        {/* Verdict strip — "can I ship this?" answered first */}
+        {isUsBound && <ComplianceVerdict profile={complianceProfile} />}
+
+        {/* Two-panel layout: left = compliance (can I ship?), right = money (what does it cost?) */}
+        <div className="grid lg:grid-cols-2 gap-5 items-start">
+
+        {/* LEFT PANEL — regulations & compliance */}
+        <div className="space-y-5">
+          {isUsBound ? (
+            <ComplianceChecklist profile={complianceProfile} />
+          ) : (
+            <div className="rounded-xl border border-border bg-card p-5 text-sm text-muted-foreground">
+              Curated compliance checklists currently cover US-bound shipments. Duty and market data below.
+            </div>
+          )}
+        </div>
+
+        {/* RIGHT PANEL — the money */}
+        <div className="space-y-5">
+
+        {isUsBound && (
+          <LandedCostCard shipmentValue={result.shipment_value ?? 0} effectiveRate={result.effective_rate ?? 0} />
+        )}
+
+        {/* THE BIG NUMBER — tariff cost */}
         <div className={`rounded-xl border p-5 sm:p-6 ${result.tariff_cost_today > 0 ? "border-destructive/30 bg-destructive-soft" : "border-success/30 bg-success-soft"}`}>
           <div className="flex items-start justify-between gap-4 flex-wrap">
             <div>
@@ -278,6 +304,10 @@ export default function ResultsPage() {
             </div>
           </div>
         )}
+
+        {/* close right panel + two-panel grid */}
+        </div>
+        </div>
 
         {/* Classification card — shows which product code was used and why */}
         {classification && (
@@ -559,15 +589,6 @@ export default function ResultsPage() {
               })}
             </div>
           </div>
-        )}
-
-        {/* US border compliance: landed cost + curated checklists */}
-        {result.destination_country === "United States" && (
-          <UsCompliancePanel
-            hsCode={result.hs_code ?? state?.input?.hsCode ?? ""}
-            shipmentValue={result.shipment_value ?? 0}
-            effectiveRate={result.effective_rate ?? 0}
-          />
         )}
 
         {/* Prediction */}
