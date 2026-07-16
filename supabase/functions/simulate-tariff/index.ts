@@ -796,9 +796,9 @@ serve(async (req) => {
         severity: escalatedRate >= 25 ? "high" : escalatedRate >= 10 ? "medium" : "low",
       },
       {
-        name: bestAlt ? `Reroute → ${bestAlt.country}` : "Alternative market",
+        name: bestAlt ? `Sell to ${bestAlt.country} instead` : "Alternative market",
         description: bestAlt
-          ? `${bestAlt.country} has ${bestAlt.rate}% effective rate on this product${bestAlt.retaliation === 0 ? " — no retaliation" : ""}. Saves ${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(bestAlt.saving)} vs shipping to ${destination_country}.`
+          ? `If you found buyers in ${bestAlt.country}, they'd face ${bestAlt.rate}% duty on this product${bestAlt.retaliation === 0 ? " — no additional duties" : ""} (${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(bestAlt.saving)} less than ${destination_country}). Note: this means selling to a different market, not rerouting this shipment — duty follows the goods' origin.`
           : "No better alternative found in our database.",
         tariff_rate: bestAlt?.rate ?? 0,
         tariff_cost: bestAlt?.cost ?? 0,
@@ -828,8 +828,12 @@ Risk score: ${risk_score}/100 (${risk_label})
 Retaliation probability: ${retaliation_probability_pct}%
 Max historical rate spike: ${max_jump > 0 ? `${(max_jump * 100).toFixed(1)}% ${volRow?.max_jump_year ? `in ${volRow.max_jump_year}` : ""}` : "No spike — stable rate"}
 ${histSummary}
-Best alternative: ${bestAlt ? `${bestAlt.country} at ${bestAlt.rate}% (saves $${bestAlt.saving.toLocaleString()})` : "none identified"}
+Alternative sales markets (different BUYERS in different countries — goods keep their ${originCountry} origin wherever they are routed, so re-routing the same US-bound shipment through another country does NOT change the US duty): ${bestAlt && bestAlt.saving > shipment_value * 0.02 ? `${bestAlt.country} charges ${bestAlt.rate}% (relevant only if diversifying sales there)` : "duty savings elsewhere are negligible — not decision-relevant"}
 `.trim();
+
+    // Is the duty burden itself significant? Below ~2% of shipment value, compliance readiness
+    // matters far more than duty optimization — steer the AI recommendation accordingly.
+    const dutyIsSignificant = tariff_cost_today > shipment_value * 0.02;
 
     let aiOutput = { risk_summary: "", recommendation: "", prediction: "" };
     try {
@@ -842,7 +846,12 @@ Best alternative: ${bestAlt ? `${bestAlt.country} at ${bestAlt.rate}% (saves $${
         messages: [
           {
             role: "system",
-            content: `You are a senior international trade advisor specializing in tariff analysis. You combine live tariff data with 29-year historical patterns to give precise, dollar-quantified advice on the shipment corridor ${originCountry} → ${destination_country}. Focus on what ${destination_country} charges on this product, any retaliatory or additional duties, and the best alternatives. Be direct. Use specific numbers. Max 120 words per section.`,
+            content: `You are a senior international trade advisor specializing in tariff analysis. You combine live tariff data with 29-year historical patterns to give precise, dollar-quantified advice on the shipment corridor ${originCountry} → ${destination_country}. Focus on what ${destination_country} charges on this product, any retaliatory or additional duties, and compliance readiness. Be direct. Use specific numbers. Max 120 words per section.
+
+HARD RULES:
+- NEVER suggest routing, transshipping, or "shipping through" a third country. Duty is based on country of origin — rerouting the same goods does not change it and suggesting it is transshipment advice.
+- "Alternative markets" means selling to different buyers in a different country. Only mention if the duty difference is large enough to justify finding new buyers.
+- If the duty cost is small relative to shipment value, do NOT center the recommendation on duty savings. Recommend the highest-impact compliance action for this corridor instead (e.g. for US-bound food: file FDA Prior Notice, verify facility registration, arrange FSVP importer, get third-party lab analysis).`,
           },
           {
             role: "user",
@@ -850,7 +859,9 @@ Best alternative: ${bestAlt ? `${bestAlt.country} at ${bestAlt.rate}% (saves $${
 
 1. RISK_SUMMARY (2-3 sentences): What is ${destination_country}'s current duty rate on this product from ${originCountry}? Explain the MFN rate, any retaliatory or additional duties in force, and the dollar cost. Reference historical rate pattern if relevant.
 
-2. RECOMMENDATION (1-2 sentences): One specific action with dollar savings quantified. Be direct.
+2. RECOMMENDATION (1-2 sentences): ${dutyIsSignificant
+              ? "One specific action to reduce or manage the duty burden, with dollars quantified (FTA qualification, product engineering, market diversification — never rerouting the same goods)."
+              : "The duty here is minor — give the single highest-impact compliance action for this corridor and product category before shipping. Do not recommend chasing small duty savings."} Be direct.
 
 3. PREDICTION (2 sentences): Based on the historical rate pattern for this corridor and current trade climate, what is likely to happen to this rate in the next 6-12 months?
 
