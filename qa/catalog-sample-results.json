@@ -1,9 +1,37 @@
 {
+  "13023900": {
+    "description": "Mucilages and thickeners derived from vegetable products oth",
+    "catalog_pct": 3.2,
+    "effective": 1,
+    "seconds": 3.9,
+    "issues": []
+  },
+  "17029052": {
+    "description": "Sugar syrups, artificial honey, caramel, nesoi, subject to g",
+    "catalog_pct": 6,
+    "effective": 6,
+    "seconds": 3.5,
+    "issues": []
+  },
   "17029064": {
     "description": "Sugars nesoi w/o 65% by dry wt. sugar, described in add. U.S",
     "catalog_pct": 6,
     "effective": 6,
     "seconds": 4.4,
+    "issues": []
+  },
+  "20079925": {
+    "description": "Cherry jam",
+    "catalog_pct": 4.5,
+    "effective": 7.9,
+    "seconds": 3.4,
+    "issues": []
+  },
+  "22087000": {
+    "description": "Liqueurs and cordials",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 3.3,
     "issues": []
   },
   "22089012": {
@@ -20,11 +48,39 @@
     "seconds": 4.4,
     "issues": []
   },
+  "27030000": {
+    "description": "Peat (including peat litter), whether or not agglomerated",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 3.7,
+    "issues": []
+  },
+  "28362000": {
+    "description": "Disodium carbonate",
+    "catalog_pct": 1.2,
+    "effective": 2,
+    "seconds": 3.6,
+    "issues": []
+  },
   "28366000": {
     "description": "Barium carbonate",
     "catalog_pct": 2.3,
     "effective": 2,
     "seconds": 4.2,
+    "issues": []
+  },
+  "29061950": {
+    "description": "Other cyclanic, cyclenic or cycloterpenic alcohols and their",
+    "catalog_pct": 5.5,
+    "effective": 3.2,
+    "seconds": 3.9,
+    "issues": []
+  },
+  "29173920": {
+    "description": "Plasticizers of aromatic polycarboxylic acids, their anhydri",
+    "catalog_pct": 6.5,
+    "effective": 4.6,
+    "seconds": 4.4,
     "issues": []
   },
   "29181310": {
@@ -41,11 +97,39 @@
     "seconds": 4.4,
     "issues": []
   },
+  "29251970": {
+    "description": "N-Chlorosuccinimide; and N,N-ethylenebis(5,6-dibromo-2,3-nor",
+    "catalog_pct": 0,
+    "effective": 2.8,
+    "seconds": 3.3,
+    "issues": []
+  },
+  "29342040": {
+    "description": "Heterocyclic compounds containing a benzothiazole ring-syste",
+    "catalog_pct": 6.5,
+    "effective": 2.7,
+    "seconds": 4.4,
+    "issues": []
+  },
   "29343050": {
     "description": "Heterocyclic compounds containing a phenothiazine ring-syste",
     "catalog_pct": 6.5,
     "effective": 2.7,
     "seconds": 2.9,
+    "issues": []
+  },
+  "32041790": {
+    "description": "Other pigments and preparations based thereon, nesoi",
+    "catalog_pct": 6.5,
+    "effective": 4.5,
+    "seconds": 3.2,
+    "issues": []
+  },
+  "38089228": {
+    "description": "Fungicides containing any fungicide which is a thioamide, th",
+    "catalog_pct": 3.7,
+    "effective": 4.3,
+    "seconds": 3.3,
     "issues": []
   },
   "38089450": {
@@ -62,11 +146,39 @@
     "seconds": 3.7,
     "issues": []
   },
+  "39173200": {
+    "description": "Tubes, pipes and hoses, of plastics, other than rigid, not r",
+    "catalog_pct": 3.1,
+    "effective": 2,
+    "seconds": 6.8,
+    "issues": []
+  },
+  "40169400": {
+    "description": "Boat or dock fenders, whether or not inflatable, of noncellu",
+    "catalog_pct": 4.2,
+    "effective": 2.7,
+    "seconds": 3.2,
+    "issues": []
+  },
   "40169955": {
     "description": "Articles nesoi, of noncellular vulcanized synthetic rubber o",
     "catalog_pct": 2.5,
     "effective": 2.7,
     "seconds": 3.2,
+    "issues": []
+  },
+  "44029001": {
+    "description": "Wood charcoal (including shell or nut charcoal), whether or ",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 3.6,
+    "issues": []
+  },
+  "45031020": {
+    "description": "Corks and stoppers of natural cork, tapered and of a thickne",
+    "catalog_pct": 0,
+    "effective": 2.3,
+    "seconds": 3.8,
     "issues": []
   },
   "45041040": {
@@ -83,11 +195,39 @@
     "seconds": 4.4,
     "issues": []
   },
+  "48120000": {
+    "description": "Filter blocks, slabs and plates of paper pulp",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 3.3,
+    "issues": []
+  },
+  "52061500": {
+    "description": "Single cotton yarn, less than 85 percent cotton by weight, o",
+    "catalog_pct": 9.2,
+    "effective": 9.2,
+    "seconds": 3.4,
+    "issues": []
+  },
   "52064100": {
     "description": "Multiple or cabled cotton yarn, < 85% cotton by weight, of c",
     "catalog_pct": 9.2,
     "effective": 9.2,
     "seconds": 4.5,
+    "issues": []
+  },
+  "54041290": {
+    "description": "Polypropylene monofilament of 67 decitex or more (not racket",
+    "catalog_pct": 6.9,
+    "effective": 4.7,
+    "seconds": 2.9,
+    "issues": []
+  },
+  "56079015": {
+    "description": "Twine, cordage, rope and cables, of jute or other textile ba",
+    "catalog_pct": 0,
+    "effective": 3.1,
+    "seconds": 3.6,
     "issues": []
   },
   "56090020": {
@@ -97,11 +237,25 @@
     "seconds": 3.3,
     "issues": []
   },
+  "60069090": {
+    "description": "Other knitted or crocheted fabrics nesoi, other than of wool",
+    "catalog_pct": 0,
+    "effective": 9.5,
+    "seconds": 4.5,
+    "issues": []
+  },
   "61031010": {
     "description": "Men's or boys' suits, knitted or crocheted, of wool or fine ",
     "catalog_pct": 10,
     "effective": 14.6,
     "seconds": 4.4,
+    "issues": []
+  },
+  "62012029": {
+    "description": "Rec perf outwear, men's or boys' anoraks, windbreakers and s",
+    "catalog_pct": 19.7,
+    "effective": 7.8,
+    "seconds": 3.9,
     "issues": []
   },
   "62014020": {
@@ -111,10 +265,31 @@
     "seconds": 3,
     "issues": []
   },
+  "62082910": {
+    "description": "Women's or girls' nightdresses and pajamas, of textile mater",
+    "catalog_pct": 1.1,
+    "effective": 10.2,
+    "seconds": 3.4,
+    "issues": []
+  },
+  "64029110": {
+    "description": "Footwear, covers ankle, w/outer soles & uppers of rubber or ",
+    "catalog_pct": 37.5,
+    "effective": 9.8,
+    "seconds": 4.5,
+    "issues": []
+  },
   "64029912": {
     "description": "Footwear not cov. ankle, w/outer soles & uppers of rubber or",
     "catalog_pct": 24,
     "effective": 9.8,
+    "seconds": 4.2,
+    "issues": []
+  },
+  "69032000": {
+    "description": "Refractory ceramic goods (o/than of siliceous fossil meals o",
+    "catalog_pct": 0,
+    "effective": 0,
     "seconds": 4.2,
     "issues": []
   },
@@ -125,11 +300,32 @@
     "seconds": 3.8,
     "issues": []
   },
+  "70196990": {
+    "description": "Open woven glass fabrics o/30 cm wide & 250 g/m2 or more, ot",
+    "catalog_pct": 7,
+    "effective": 3.8,
+    "seconds": 3,
+    "issues": []
+  },
   "70200040": {
     "description": "Glass inners for vacuum flasks or for other vacuum vessels",
     "catalog_pct": 6.6,
     "effective": 3.9,
     "seconds": 3.5,
+    "issues": []
+  },
+  "72159050": {
+    "description": "Iron/nonalloy steel, bars and rods, further worked than cold",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 3.8,
+    "issues": []
+  },
+  "73121010": {
+    "description": "Stainless steel, stranded wire, not elect. insulated, not fi",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 3.3,
     "issues": []
   },
   "73141420": {
@@ -139,11 +335,25 @@
     "seconds": 3.8,
     "issues": []
   },
+  "76042100": {
+    "description": "Aluminum alloy, hollow profiles",
+    "catalog_pct": 1.5,
+    "effective": 12.9,
+    "seconds": 3.4,
+    "issues": []
+  },
   "81041100": {
     "description": "Magnesium, unwrought, containing at least 99.8 percent by we",
     "catalog_pct": 8,
     "effective": 4.7,
     "seconds": 3.8,
+    "issues": []
+  },
+  "82119180": {
+    "description": "Table knives w/fixed blades, w/handles other than of silver-",
+    "catalog_pct": 4.9,
+    "effective": 2.2,
+    "seconds": 3.9,
     "issues": []
   },
   "82141000": {
@@ -153,11 +363,32 @@
     "seconds": 3.2,
     "issues": []
   },
+  "84182920": {
+    "description": "Refrigerators, household type, electric or other, other than",
+    "catalog_pct": 1.9,
+    "effective": 0.1,
+    "seconds": 3.4,
+    "issues": []
+  },
+  "84451200": {
+    "description": "Combing machines for preparing textile fibers",
+    "catalog_pct": 0,
+    "effective": 1.3,
+    "seconds": 3.9,
+    "issues": []
+  },
   "84472030": {
     "description": "V-bed flat knitting machines, nesoi",
     "catalog_pct": 2.6,
     "effective": 0.2,
     "seconds": 3.1,
+    "issues": []
+  },
+  "84719000": {
+    "description": "Magnetic or optical readers, nesoi; machines for transcribin",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 3.3,
     "issues": []
   },
   "84858000": {
@@ -167,11 +398,32 @@
     "seconds": 3.1,
     "issues": []
   },
+  "85063050": {
+    "description": "Mercuric oxide primary cells and primary batteries having an",
+    "catalog_pct": 2.7,
+    "effective": 2.7,
+    "seconds": 3,
+    "issues": []
+  },
   "85081900": {
     "description": "Vacuum cleaners with self-contained electric motor, other th",
     "catalog_pct": 0,
     "effective": 0,
     "seconds": 4.6,
+    "issues": []
+  },
+  "85285950": {
+    "description": "Color video monitors nesoi, with video display diagonal over",
+    "catalog_pct": 5,
+    "effective": 1.4,
+    "seconds": 2.8,
+    "issues": []
+  },
+  "85469000": {
+    "description": "Electrical insulators of any material, other than glass or c",
+    "catalog_pct": 0,
+    "effective": 2,
+    "seconds": 3.2,
     "issues": []
   },
   "86012000": {
@@ -181,11 +433,25 @@
     "seconds": 3.8,
     "issues": []
   },
+  "87163100": {
+    "description": "Tanker trailers and tanker semi-trailers, not mech. propelle",
+    "catalog_pct": 0,
+    "effective": 0.6,
+    "seconds": 3.7,
+    "issues": []
+  },
   "90172040": {
     "description": "Disc calculators, slide rules and other mathematical calcula",
     "catalog_pct": 3.9,
     "effective": 3.7,
     "seconds": 3.7,
+    "issues": []
+  },
+  "90223000": {
+    "description": "X-ray tubes",
+    "catalog_pct": 0,
+    "effective": 0.1,
+    "seconds": 4.3,
     "issues": []
   },
   "90258050": {
@@ -195,11 +461,32 @@
     "seconds": 2.9,
     "issues": []
   },
+  "91101900": {
+    "description": "Rough watch movements",
+    "catalog_pct": 9,
+    "effective": 7.4,
+    "seconds": 4.7,
+    "issues": []
+  },
+  "95065940": {
+    "description": "Badminton rackets and parts and accessories thereof",
+    "catalog_pct": 5.6,
+    "effective": 2.4,
+    "seconds": 3.4,
+    "issues": []
+  },
   "95069945": {
     "description": "Sleds and bobsleds (o/than bobsleds & luges for intl. compet",
     "catalog_pct": 2.8,
     "effective": 2.4,
     "seconds": 3.4,
+    "issues": []
+  },
+  "98090010": {
+    "description": "Public documents, incl. microfiche etc. (incl. motion pictur",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 3.2,
     "issues": []
   },
   "98230437": {
@@ -209,6 +496,13 @@
     "seconds": 3.4,
     "issues": []
   },
+  "98230452": {
+    "description": "USMCA goods: cheese of Canada provided for in 0406.90.94, ov",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 3.8,
+    "issues": []
+  },
   "98230706": {
     "description": "USMCA goods: concentrated milk of Canada provided for in 040",
     "catalog_pct": 0,
@@ -216,11 +510,32 @@
     "seconds": 3.4,
     "issues": []
   },
+  "99031710": {
+    "description": "Sugars described in US note 15(a) to this subchapter",
+    "catalog_pct": 1000000,
+    "effective": 0,
+    "seconds": 3.4,
+    "issues": []
+  },
+  "99040411": {
+    "description": "Butter & cream with over 45% butterfat in 0401.50.75, 0403.9",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 3.1,
+    "issues": []
+  },
   "99040435": {
     "description": "Dried milk & cream, w/ or w/o sugar or sweetening matter in ",
     "catalog_pct": 0,
     "effective": 0,
     "seconds": 3.3,
+    "issues": []
+  },
+  "99041219": {
+    "description": "Peanuts, other, in 1202.30.80,1202.42.80, 2008.11.35 & 2008.",
+    "catalog_pct": 43.9,
+    "effective": 43.9,
+    "seconds": 2.6,
     "issues": []
   },
   "01012100": {
@@ -249,6 +564,34 @@
     "catalog_pct": 0,
     "effective": 0.8,
     "seconds": 3.1,
+    "issues": []
+  },
+  "03038900": {
+    "description": "Smelts, cusk, pollock, shad, sturgeon, atkafish, fresh-water",
+    "catalog_pct": 0,
+    "effective": 0.2,
+    "seconds": 8.6,
+    "issues": []
+  },
+  "04052020": {
+    "description": "Butter substitute dairy spreads, over 45% butterfat weight, ",
+    "catalog_pct": 0,
+    "effective": 9.1,
+    "seconds": 3.9,
+    "issues": []
+  },
+  "07069020": {
+    "description": "Radishes, fresh or chilled",
+    "catalog_pct": 2.7,
+    "effective": 6.2,
+    "seconds": 3.3,
+    "issues": []
+  },
+  "08103000": {
+    "description": "Black, white or red currants and gooseberries (other than ki",
+    "catalog_pct": 0,
+    "effective": 0.8,
+    "seconds": 4.5,
     "issues": []
   }
 }

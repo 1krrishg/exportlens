@@ -8,7 +8,8 @@ const corsHeaders = {
 
 const GROQ_API_KEY = Deno.env.get("GROQ_API_KEY") ?? "";
 const GROQ_API_KEY_2 = Deno.env.get("GROQ_API_KEY_2") ?? "";
-const GROQ_KEYS = [GROQ_API_KEY, GROQ_API_KEY_2].filter(Boolean);
+const GROQ_API_KEY_3 = Deno.env.get("GROQ_API_KEY_3") ?? "";
+const GROQ_KEYS = [GROQ_API_KEY, GROQ_API_KEY_2, GROQ_API_KEY_3].filter(Boolean);
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? "";
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
 const WTO_API_KEY = Deno.env.get("WTO_API_KEY") ?? "";

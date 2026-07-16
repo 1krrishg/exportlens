@@ -231,9 +231,10 @@ interface CbpRuling {
 }
 
 const GROQ_API_KEY_2 = Deno.env.get("GROQ_API_KEY_2") ?? "";
+const GROQ_API_KEY_3 = Deno.env.get("GROQ_API_KEY_3") ?? "";
 
 async function callGroq(messages: { role: string; content: string }[], maxTokens = 1200): Promise<string> {
-  const keys = [GROQ_API_KEY, GROQ_API_KEY_2].filter(Boolean);
+  const keys = [GROQ_API_KEY, GROQ_API_KEY_2, GROQ_API_KEY_3].filter(Boolean);
   let lastErr = "";
   for (const key of keys) {
     const resp = await fetch("https://api.groq.com/openai/v1/chat/completions", {

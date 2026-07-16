@@ -116,7 +116,7 @@ async function extractFromPdf(base64Data: string): Promise<Record<string, unknow
   }
 
   // Second: extract structured fields from OCR text using Groq (fast, cheap)
-  const GROQ_KEYS = [GROQ_API_KEY, Deno.env.get("GROQ_API_KEY_2") ?? ""].filter(Boolean);
+  const GROQ_KEYS = [GROQ_API_KEY, Deno.env.get("GROQ_API_KEY_2") ?? "", Deno.env.get("GROQ_API_KEY_3") ?? ""].filter(Boolean);
   let groqResp: Response | null = null;
   for (const key of GROQ_KEYS) {
     groqResp = await fetch("https://api.groq.com/openai/v1/chat/completions", {
