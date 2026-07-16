@@ -25,4 +25,3 @@ dist-ssr
 
 # Local scripts with credentials — never commit
 scripts/
-CONTEXT.md
