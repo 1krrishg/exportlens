@@ -634,7 +634,13 @@ serve(async (req) => {
     // then filter sentinels (9999.99 → 999999%) same as the rate_history handling.
     const rawCatalogMfn = catalog?.mfn_rate ?? 0;
     const catalogPctRaw = rawCatalogMfn * 100;
-    const catalogMfnPct = catalogPctRaw > 200 ? 0 : catalogPctRaw;
+    // Sentinel (>200%) means the duty is SPECIFIC (¢/kg, per unit) — not expressible as a
+    // percentage. Treat the ad-valorem part as 0 but tell the user rather than implying duty-free.
+    const isSpecificDuty = catalogPctRaw > 200;
+    const catalogMfnPct = isSpecificDuty ? 0 : catalogPctRaw;
+    const specific_duty_note = isSpecificDuty
+      ? "This product carries a specific duty (charged per kg/unit, not as a percentage of value). The percentage shown excludes it — check the exact HTS line at hts.usitc.gov or with your broker for the per-unit amount."
+      : null;
     // Only use USITC catalog as fallback when destination IS the US — it's a US-only dataset
     const usMfnFallback = destination_country === "United States"
       ? (liveEntry?.mfn_rate ?? (catalogMfnPct > 0 ? catalogMfnPct : 0))
@@ -948,6 +954,7 @@ ${context}`,
       retaliation_probability: retaliation_probability_pct,
       rate_history: rateHistory,
       alternative_markets: bestAlts,
+      specific_duty_note,
       // hts_volatility has zeroed/corrupt rows for many products; when it disagrees with
       // rate_history (the sparkline's source), derive avg/peak from rate_history so the
       // header numbers always match the chart.

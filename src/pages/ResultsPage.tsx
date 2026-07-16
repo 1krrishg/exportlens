@@ -41,6 +41,7 @@ type SimResult = {
   sanctions_alert?: boolean; sanctions_level?: string; sanctions_note?: string; sanctions_authority?: string; sanctioned_party?: string;
   bound_rate?: number | null; escalation_headroom?: number | null;
   bilateral_trade_value_m?: number | null;
+  specific_duty_note?: string | null;
   data_source: string; data_freshness: string | null;
 };
 
@@ -276,6 +277,11 @@ export default function ResultsPage() {
           {result.retaliation_note && (
             <div className="mt-3 pt-3 border-t border-destructive/10 text-xs text-muted-foreground">
               {result.retaliation_note}
+            </div>
+          )}
+          {result.specific_duty_note && (
+            <div className="mt-3 pt-3 border-t border-warning/20 text-xs text-warning font-medium">
+              ⚠ {result.specific_duty_note}
             </div>
           )}
         </div>
