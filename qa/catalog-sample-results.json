@@ -1,0 +1,254 @@
+{
+  "17029064": {
+    "description": "Sugars nesoi w/o 65% by dry wt. sugar, described in add. U.S",
+    "catalog_pct": 6,
+    "effective": 6,
+    "seconds": 4.4,
+    "issues": []
+  },
+  "22089012": {
+    "description": "Slivovitz brandy, valued not over $3.43/liter, in containers",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 2.9,
+    "issues": []
+  },
+  "24013037": {
+    "description": "Tobacco refuse,  from other tobacco, for cigarettes, describ",
+    "catalog_pct": 0,
+    "effective": 60,
+    "seconds": 4.4,
+    "issues": []
+  },
+  "28366000": {
+    "description": "Barium carbonate",
+    "catalog_pct": 2.3,
+    "effective": 2,
+    "seconds": 4.2,
+    "issues": []
+  },
+  "29181310": {
+    "description": "Potassium antimony tartrate (Tartar emetic)",
+    "catalog_pct": 0,
+    "effective": 3.6,
+    "seconds": 4.9,
+    "issues": []
+  },
+  "29215904": {
+    "description": "1,8-diaminonaphthalene (1,8-naphthalenediamino)",
+    "catalog_pct": 0,
+    "effective": 3.2,
+    "seconds": 4.4,
+    "issues": []
+  },
+  "29343050": {
+    "description": "Heterocyclic compounds containing a phenothiazine ring-syste",
+    "catalog_pct": 6.5,
+    "effective": 2.7,
+    "seconds": 2.9,
+    "issues": []
+  },
+  "38089450": {
+    "description": "Disinfectants not subject to subheading note 1 of chapter 38",
+    "catalog_pct": 5,
+    "effective": 4.3,
+    "seconds": 3.7,
+    "issues": []
+  },
+  "39052900": {
+    "description": "Vinyl acetate copolymers, other than in aqueous dispersion, ",
+    "catalog_pct": 4,
+    "effective": 3.3,
+    "seconds": 3.7,
+    "issues": []
+  },
+  "40169955": {
+    "description": "Articles nesoi, of noncellular vulcanized synthetic rubber o",
+    "catalog_pct": 2.5,
+    "effective": 2.7,
+    "seconds": 3.2,
+    "issues": []
+  },
+  "45041040": {
+    "description": "Agglomerated cork wallcoverings, backed with paper or otherw",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 3.3,
+    "issues": []
+  },
+  "48109212": {
+    "description": "Multi-ply paper & paperboard nesoi, coat w/kaolin/other inor",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 4.4,
+    "issues": []
+  },
+  "52064100": {
+    "description": "Multiple or cabled cotton yarn, < 85% cotton by weight, of c",
+    "catalog_pct": 9.2,
+    "effective": 9.2,
+    "seconds": 4.5,
+    "issues": []
+  },
+  "56090020": {
+    "description": "Articles of yarn, strip, twine, cordage, rope or cables neso",
+    "catalog_pct": 0,
+    "effective": 2.8,
+    "seconds": 3.3,
+    "issues": []
+  },
+  "61031010": {
+    "description": "Men's or boys' suits, knitted or crocheted, of wool or fine ",
+    "catalog_pct": 10,
+    "effective": 14.6,
+    "seconds": 4.4,
+    "issues": []
+  },
+  "62014020": {
+    "description": "Men's or boys' overcoats, carcoats, capes & similar coats, n",
+    "catalog_pct": 27.7,
+    "effective": 7.8,
+    "seconds": 3,
+    "issues": []
+  },
+  "64029912": {
+    "description": "Footwear not cov. ankle, w/outer soles & uppers of rubber or",
+    "catalog_pct": 24,
+    "effective": 9.8,
+    "seconds": 4.2,
+    "issues": []
+  },
+  "69120046": {
+    "description": "Ceramic (o/than porcelain or china) household serviette ring",
+    "catalog_pct": 9.8,
+    "effective": 8.7,
+    "seconds": 3.8,
+    "issues": []
+  },
+  "70200040": {
+    "description": "Glass inners for vacuum flasks or for other vacuum vessels",
+    "catalog_pct": 6.6,
+    "effective": 3.9,
+    "seconds": 3.5,
+    "issues": []
+  },
+  "73141420": {
+    "description": "Stainless steel, woven cloth (o/than endless bands for machi",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 3.8,
+    "issues": []
+  },
+  "81041100": {
+    "description": "Magnesium, unwrought, containing at least 99.8 percent by we",
+    "catalog_pct": 8,
+    "effective": 4.7,
+    "seconds": 3.8,
+    "issues": []
+  },
+  "82141000": {
+    "description": "Base metal paper knives, letter openers, erasing knives, non",
+    "catalog_pct": 4.2,
+    "effective": 2.7,
+    "seconds": 3.2,
+    "issues": []
+  },
+  "84472030": {
+    "description": "V-bed flat knitting machines, nesoi",
+    "catalog_pct": 2.6,
+    "effective": 0.2,
+    "seconds": 3.1,
+    "issues": []
+  },
+  "84858000": {
+    "description": "Other machines for additive manufacturing, not by metal, pla",
+    "catalog_pct": 2.5,
+    "effective": 1.7,
+    "seconds": 3.1,
+    "issues": []
+  },
+  "85081900": {
+    "description": "Vacuum cleaners with self-contained electric motor, other th",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 4.6,
+    "issues": []
+  },
+  "86012000": {
+    "description": "Rail locomotives powered by electric accumulators (batteries",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 3.8,
+    "issues": []
+  },
+  "90172040": {
+    "description": "Disc calculators, slide rules and other mathematical calcula",
+    "catalog_pct": 3.9,
+    "effective": 3.7,
+    "seconds": 3.7,
+    "issues": []
+  },
+  "90258050": {
+    "description": "Combinations of thermometers, barometers and similar tempera",
+    "catalog_pct": 1.6,
+    "effective": 0.2,
+    "seconds": 2.9,
+    "issues": []
+  },
+  "95069945": {
+    "description": "Sleds and bobsleds (o/than bobsleds & luges for intl. compet",
+    "catalog_pct": 2.8,
+    "effective": 2.4,
+    "seconds": 3.4,
+    "issues": []
+  },
+  "98230437": {
+    "description": "USMCA goods: cheese of Canada provided for in 0406.30.91, ov",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 3.4,
+    "issues": []
+  },
+  "98230706": {
+    "description": "USMCA goods: concentrated milk of Canada provided for in 040",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 3.4,
+    "issues": []
+  },
+  "99040435": {
+    "description": "Dried milk & cream, w/ or w/o sugar or sweetening matter in ",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 3.3,
+    "issues": []
+  },
+  "01012100": {
+    "description": "Live purebred breeding horses",
+    "catalog_pct": 0,
+    "effective": 2.3,
+    "seconds": 5.9,
+    "issues": []
+  },
+  "09012100": {
+    "description": "Coffee, roasted, not decaffeinated",
+    "catalog_pct": 0,
+    "effective": 0,
+    "seconds": 4.3,
+    "issues": []
+  },
+  "04052030": {
+    "description": "Butter substitute dairy spreads, over 45% butterfat weight, ",
+    "catalog_pct": 0,
+    "effective": 9.1,
+    "seconds": 3.1,
+    "issues": []
+  },
+  "08105000": {
+    "description": "Kiwi fruit, fresh",
+    "catalog_pct": 0,
+    "effective": 0.8,
+    "seconds": 3.1,
+    "issues": []
+  }
+}
