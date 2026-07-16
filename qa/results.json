@@ -288,5 +288,457 @@
       "CBP Entry Basics"
     ],
     "issues": []
+  },
+  "7208|China": {
+    "product": "Steel (Cold-Rolled/Corrosion-Resistant)",
+    "origin": "China",
+    "tested_hs": "72080000",
+    "seconds": 4.3,
+    "effective_rate": 290,
+    "extra_duty": 555,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "7208|all": {
+    "product": "Steel (flat-rolled)",
+    "origin": "India",
+    "tested_hs": "72080000",
+    "seconds": 5.2,
+    "effective_rate": 60,
+    "extra_duty": 95,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "7208|India": {
+    "product": "Steel (flat-rolled)",
+    "origin": "India",
+    "tested_hs": "72080000",
+    "seconds": 4.9,
+    "effective_rate": 60,
+    "extra_duty": 95,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "7210|all": {
+    "product": "Steel (coated flat-rolled)",
+    "origin": "India",
+    "tested_hs": "72100000",
+    "seconds": 5.4,
+    "effective_rate": 25,
+    "extra_duty": 25,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "7306|India": {
+    "product": "Welded Steel Pipe/Tube",
+    "origin": "India",
+    "tested_hs": "73060000",
+    "seconds": 5,
+    "effective_rate": 20,
+    "extra_duty": 40,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "7307|India": {
+    "product": "Steel Flanges/Fittings",
+    "origin": "India",
+    "tested_hs": "73070000",
+    "seconds": 6,
+    "effective_rate": 82.4,
+    "extra_duty": 156,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "7604|all": {
+    "product": "Aluminum extrusions",
+    "origin": "India",
+    "tested_hs": "76040000",
+    "seconds": 5,
+    "effective_rate": 12.9,
+    "extra_duty": 10,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "7604|China": {
+    "product": "Aluminum Extrusions",
+    "origin": "China",
+    "tested_hs": "76040000",
+    "seconds": 5.3,
+    "effective_rate": 386.9,
+    "extra_duty": 758,
+    "flags": [
+      "UFLPA"
+    ],
+    "issues": []
+  },
+  "7606|all": {
+    "product": "Aluminum plates/sheets",
+    "origin": "India",
+    "tested_hs": "76060000",
+    "seconds": 5,
+    "effective_rate": 62.8,
+    "extra_duty": 108,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "7606|China": {
+    "product": "Aluminum plates/sheets",
+    "origin": "China",
+    "tested_hs": "76060000",
+    "seconds": 7.9,
+    "effective_rate": 48.8,
+    "extra_duty": 80,
+    "flags": [
+      "UFLPA"
+    ],
+    "issues": []
+  },
+  "7606|India": {
+    "product": "Aluminum Sheet",
+    "origin": "India",
+    "tested_hs": "76060000",
+    "seconds": 4.9,
+    "effective_rate": 62.8,
+    "extra_duty": 108,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "8411|all": {
+    "product": "Turbojets/Gas Turbines (Jet Engines)",
+    "origin": "India",
+    "tested_hs": "84110000",
+    "seconds": 5,
+    "effective_rate": 0.4,
+    "extra_duty": 0,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "8414|China": {
+    "product": "Air Pumps/Compressors/Fans",
+    "origin": "China",
+    "tested_hs": "84140000",
+    "seconds": 5.7,
+    "effective_rate": 26,
+    "extra_duty": 50,
+    "flags": [
+      "FCC"
+    ],
+    "issues": []
+  },
+  "8414|all": {
+    "product": "Air Pumps/Compressors/Fans",
+    "origin": "India",
+    "tested_hs": "84140000",
+    "seconds": 4.4,
+    "effective_rate": 1,
+    "extra_duty": 0,
+    "flags": [
+      "FCC"
+    ],
+    "issues": []
+  },
+  "8471|China": {
+    "product": "Computers/Laptops",
+    "origin": "China",
+    "tested_hs": "84710000",
+    "seconds": 6.2,
+    "effective_rate": 25,
+    "extra_duty": 50,
+    "flags": [
+      "FCC"
+    ],
+    "issues": []
+  },
+  "8479|all": {
+    "product": "Industrial Machinery",
+    "origin": "India",
+    "tested_hs": "84790000",
+    "seconds": 6.8,
+    "effective_rate": 0.6,
+    "extra_duty": 0,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "8504|all": {
+    "product": "Power Supplies/Transformers",
+    "origin": "India",
+    "tested_hs": "85040000",
+    "seconds": 4.9,
+    "effective_rate": 0.8,
+    "extra_duty": 0,
+    "flags": [
+      "CPSC",
+      "FCC"
+    ],
+    "issues": []
+  },
+  "8504|China": {
+    "product": "Power Supplies/Transformers",
+    "origin": "China",
+    "tested_hs": "85040000",
+    "seconds": 6.1,
+    "effective_rate": 25.8,
+    "extra_duty": 50,
+    "flags": [
+      "CPSC",
+      "FCC"
+    ],
+    "issues": []
+  },
+  "8517|China": {
+    "product": "Telephones/Smartphones",
+    "origin": "China",
+    "tested_hs": "85170000",
+    "seconds": 68.9,
+    "effective_rate": 7.5,
+    "extra_duty": 15,
+    "flags": [
+      "FCC"
+    ],
+    "issues": []
+  },
+  "8528|China": {
+    "product": "Monitors/TVs/Displays",
+    "origin": "China",
+    "tested_hs": "85280000",
+    "seconds": 5.1,
+    "effective_rate": 8.9,
+    "extra_duty": 15,
+    "flags": [
+      "CPSC",
+      "FCC"
+    ],
+    "issues": []
+  },
+  "8528|all": {
+    "product": "Monitors/TVs/Displays",
+    "origin": "India",
+    "tested_hs": "85280000",
+    "seconds": 5.1,
+    "effective_rate": 1.4,
+    "extra_duty": 0,
+    "flags": [
+      "CPSC",
+      "FCC"
+    ],
+    "issues": []
+  },
+  "8529|China": {
+    "product": "Parts for Radio/TV Apparatus",
+    "origin": "China",
+    "tested_hs": "85290000",
+    "seconds": 9.9,
+    "effective_rate": 25,
+    "extra_duty": 50,
+    "flags": [
+      "FCC"
+    ],
+    "issues": []
+  },
+  "8536|China": {
+    "product": "Electrical Switches/Connectors",
+    "origin": "China",
+    "tested_hs": "85360000",
+    "seconds": 76.2,
+    "effective_rate": 26.6,
+    "extra_duty": 50,
+    "flags": [
+      "CPSC",
+      "FCC"
+    ],
+    "issues": []
+  },
+  "8536|all": {
+    "product": "Electrical Switches/Connectors",
+    "origin": "India",
+    "tested_hs": "85360000",
+    "seconds": 5.1,
+    "effective_rate": 1.6,
+    "extra_duty": 0,
+    "flags": [
+      "CPSC",
+      "FCC"
+    ],
+    "issues": []
+  },
+  "8541|China": {
+    "product": "Solar Cells/Panels (Section 301 + ADD/CVD)",
+    "origin": "China",
+    "tested_hs": "85410000",
+    "seconds": 6.7,
+    "effective_rate": 302,
+    "extra_duty": 590,
+    "flags": [
+      "UFLPA"
+    ],
+    "issues": []
+  },
+  "8541|all": {
+    "product": "Solar Cells/Diodes",
+    "origin": "India",
+    "tested_hs": "85410000",
+    "seconds": 7.2,
+    "effective_rate": 14,
+    "extra_duty": 14,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "8542|China": {
+    "product": "Semiconductors",
+    "origin": "China",
+    "tested_hs": "85420000",
+    "seconds": 9.7,
+    "effective_rate": 25,
+    "extra_duty": 50,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "8544|China": {
+    "product": "Insulated Wire/Cable",
+    "origin": "China",
+    "tested_hs": "85440000",
+    "seconds": 5.6,
+    "effective_rate": 27.8,
+    "extra_duty": 50,
+    "flags": [
+      "CPSC",
+      "FCC"
+    ],
+    "issues": []
+  },
+  "8544|all": {
+    "product": "Insulated Wire/Cable",
+    "origin": "India",
+    "tested_hs": "85440000",
+    "seconds": 5.4,
+    "effective_rate": 2.8,
+    "extra_duty": 0,
+    "flags": [
+      "CPSC",
+      "FCC"
+    ],
+    "issues": []
+  },
+  "8703|all": {
+    "product": "Passenger Vehicles",
+    "origin": "India",
+    "tested_hs": "87030000",
+    "seconds": 11.3,
+    "effective_rate": 2.5,
+    "extra_duty": 0,
+    "flags": [
+      "EPA"
+    ],
+    "issues": []
+  },
+  "8703|China": {
+    "product": "Passenger Vehicles",
+    "origin": "China",
+    "tested_hs": "87030000",
+    "seconds": 5.6,
+    "effective_rate": 102.5,
+    "extra_duty": 200,
+    "flags": [
+      "EPA"
+    ],
+    "issues": []
+  },
+  "8708|China": {
+    "product": "Auto Parts",
+    "origin": "China",
+    "tested_hs": "87080000",
+    "seconds": 5.3,
+    "effective_rate": 26.4,
+    "extra_duty": 50,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "8708|all": {
+    "product": "Auto Parts",
+    "origin": "India",
+    "tested_hs": "87080000",
+    "seconds": 5.4,
+    "effective_rate": 1.4,
+    "extra_duty": 0,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "8711|all": {
+    "product": "Motorcycles",
+    "origin": "India",
+    "tested_hs": "87110000",
+    "seconds": 6,
+    "effective_rate": 0.5,
+    "extra_duty": 0,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "8802|China": {
+    "product": "Aircraft",
+    "origin": "China",
+    "tested_hs": "88020000",
+    "seconds": 6.1,
+    "effective_rate": 25,
+    "extra_duty": 50,
+    "flags": [
+      "CBP Entry Basics"
+    ],
+    "issues": []
+  },
+  "9403|China": {
+    "product": "Wooden Furniture",
+    "origin": "China",
+    "tested_hs": "94030000",
+    "seconds": 6.4,
+    "effective_rate": 216,
+    "extra_duty": 432,
+    "flags": [
+      "CPSC"
+    ],
+    "issues": []
+  },
+  "9503|China": {
+    "product": "Toys/Games",
+    "origin": "China",
+    "tested_hs": "95030000",
+    "seconds": 4.8,
+    "effective_rate": 7.5,
+    "extra_duty": 15,
+    "flags": [
+      "CPSC"
+    ],
+    "issues": []
   }
 }
