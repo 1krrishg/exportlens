@@ -722,7 +722,7 @@ export default function SimulatorPage() {
                   <div className="relative flex-1">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <Input
-                      placeholder="Describe product or paste HS code…"
+                      placeholder="e.g. turmeric powder, basmati rice, brass handicrafts…"
                       value={productQuery}
                       onChange={(e) => handleProductInput(e.target.value)}
                       onFocus={() => productQuery.length >= 2 && setShowDropdown(true)}
@@ -769,6 +769,22 @@ export default function SimulatorPage() {
                   </div>
                 )}
               </div>
+
+              {/* Quick picks: common Indian exports */}
+              {candidates.length === 0 && !classifying && (
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {["Turmeric powder", "Basmati rice", "Frozen shrimp", "Cotton t-shirts", "Bed sheets", "Brass handicrafts", "Gold jewelry", "Leather bags"].map((p) => (
+                    <button
+                      key={p}
+                      type="button"
+                      onClick={() => { handleProductInput(p); setShowDropdown(false); }}
+                      className="px-2.5 py-1 rounded-full border border-border bg-muted/30 text-xs text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors"
+                    >
+                      {p}
+                    </button>
+                  ))}
+                </div>
+              )}
 
               {/* Classification loading state */}
               {classifying && (
