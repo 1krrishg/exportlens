@@ -30,6 +30,7 @@ const WTO_COUNTRY_CODES: Record<string, string> = {
   "Indonesia": "360",
   "Thailand": "764",
   "Malaysia": "458",
+  "United Arab Emirates": "784",
 };
 
 // WTO partner codes (exporting/origin country)
@@ -51,6 +52,7 @@ const WTO_PARTNER_CODES: Record<string, string> = {
   "Indonesia": "360",
   "Thailand": "764",
   "Malaysia": "458",
+  "United Arab Emirates": "784",
 };
 
 // Fetch MFN tariff rate a country charges on a given HS4 product
@@ -101,6 +103,10 @@ const FTA_AGREEMENTS: Record<string, string> = {
   "Australia::South Korea": "KAFTA",
   "Japan::India": "CEPA",
   "India::Japan": "CEPA",
+  "India::United Arab Emirates": "India–UAE CEPA",
+  "United Arab Emirates::India": "India–UAE CEPA",
+  "India::Australia": "ECTA",
+  "Australia::India": "ECTA",
 };
 
 // ── OFAC Sanctions — trade with these countries is prohibited or heavily restricted ──
@@ -392,6 +398,7 @@ const WTO_BOUND_AVG: Record<string, number> = {
   "Mexico": 36.2, "Japan": 4.7, "India": 50.8, "South Korea": 16.5,
   "United Kingdom": 5.1, "Australia": 9.9, "Brazil": 31.4, "Singapore": 9.5,
   "Turkey": 28.6, "Vietnam": 11.5, "Indonesia": 37.1, "Thailand": 28.0, "Malaysia": 21.3,
+  "United Arab Emirates": 14.5,
 };
 
 // UN M49 country codes for Comtrade (US differs from WTO: 842 vs 840). EU has no
@@ -401,6 +408,7 @@ const COMTRADE_CODES: Record<string, string> = {
   "Japan": "392", "India": "356", "South Korea": "410", "United Kingdom": "826",
   "Australia": "36", "Brazil": "76", "Singapore": "702", "Turkey": "792",
   "Vietnam": "704", "Indonesia": "360", "Thailand": "764", "Malaysia": "458",
+  "United Arab Emirates": "784",
 };
 
 // Fetch bilateral trade flow for this exact HS4 product from UN Comtrade (free public API).
@@ -447,6 +455,7 @@ const ALL_COUNTRIES = [
   { name: "United Kingdom", code: "GB" },
   { name: "Brazil", code: "BR" },
   { name: "Singapore", code: "SG" },
+  { name: "United Arab Emirates", code: "AE" },
 ];
 
 serve(async (req) => {

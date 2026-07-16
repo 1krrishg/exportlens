@@ -13,7 +13,7 @@ import { supabase } from "@/integrations/supabase/client";
 const COUNTRIES = [
   "United States", "China", "European Union", "Canada", "Mexico", "Japan", "India",
   "South Korea", "United Kingdom", "Australia", "Brazil", "Singapore",
-  "Turkey", "Vietnam", "Indonesia", "Thailand", "Malaysia",
+  "Turkey", "Vietnam", "Indonesia", "Thailand", "Malaysia", "United Arab Emirates",
 ];
 
 type Mode = "document" | "manual";
