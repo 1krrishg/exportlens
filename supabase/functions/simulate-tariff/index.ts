@@ -7,6 +7,8 @@ const corsHeaders = {
 };
 
 const GROQ_API_KEY = Deno.env.get("GROQ_API_KEY") ?? "";
+const GROQ_API_KEY_2 = Deno.env.get("GROQ_API_KEY_2") ?? "";
+const GROQ_KEYS = [GROQ_API_KEY, GROQ_API_KEY_2].filter(Boolean);
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? "";
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
 const WTO_API_KEY = Deno.env.get("WTO_API_KEY") ?? "";
@@ -886,10 +888,12 @@ Alternative sales markets (different BUYERS in different countries — goods kee
 
     let aiOutput = { risk_summary: "", recommendation: "", prediction: "" };
     try {
-    const groqResp = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    let groqResp: Response | null = null;
+    for (const groqKey of GROQ_KEYS) {
+    groqResp = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       signal: AbortSignal.timeout(25000),
-      headers: { "Authorization": `Bearer ${GROQ_API_KEY}`, "Content-Type": "application/json" },
+      headers: { "Authorization": `Bearer ${groqKey}`, "Content-Type": "application/json" },
       body: JSON.stringify({
         model: "llama-3.3-70b-versatile",
         messages: [
@@ -924,8 +928,11 @@ ${context}`,
         temperature: 0.25,
       }),
     });
+    // Rotate to the fallback key only on rate-limit/auth failures
+    if (groqResp.ok || ![429, 401, 403].includes(groqResp.status)) break;
+    }
 
-    if (groqResp.ok) {
+    if (groqResp && groqResp.ok) {
       const groqData = await groqResp.json();
       const raw = groqData.choices?.[0]?.message?.content ?? "{}";
       const jsonStr = raw.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();

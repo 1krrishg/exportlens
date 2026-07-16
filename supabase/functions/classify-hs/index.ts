@@ -230,20 +230,31 @@ interface CbpRuling {
   tariffNumbers?: string[];
 }
 
+const GROQ_API_KEY_2 = Deno.env.get("GROQ_API_KEY_2") ?? "";
+
 async function callGroq(messages: { role: string; content: string }[], maxTokens = 1200): Promise<string> {
-  const resp = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-    method: "POST",
-    headers: { "Authorization": `Bearer ${GROQ_API_KEY}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      model: "llama-3.3-70b-versatile",
-      temperature: 0.0,
-      max_tokens: maxTokens,
-      messages,
-    }),
-  });
-  if (!resp.ok) throw new Error(`Groq error ${resp.status}: ${await resp.text()}`);
-  const data = await resp.json();
-  return data.choices?.[0]?.message?.content ?? "";
+  const keys = [GROQ_API_KEY, GROQ_API_KEY_2].filter(Boolean);
+  let lastErr = "";
+  for (const key of keys) {
+    const resp = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: { "Authorization": `Bearer ${key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "llama-3.3-70b-versatile",
+        temperature: 0.0,
+        max_tokens: maxTokens,
+        messages,
+      }),
+    });
+    if (resp.ok) {
+      const data = await resp.json();
+      return data.choices?.[0]?.message?.content ?? "";
+    }
+    lastErr = `Groq error ${resp.status}: ${await resp.text()}`;
+    // Only rotate to the next key on rate limits/auth issues; other errors won't improve
+    if (![429, 401, 403].includes(resp.status)) break;
+  }
+  throw new Error(lastErr);
 }
 
 function parseJson(raw: string): unknown {
@@ -486,9 +497,19 @@ serve(async (req) => {
     });
 
     // If LLM returned nothing valid, fall back to top USITC rows from the identified headings
+    // Degraded-mode fallback: order candidates by word overlap with the query instead of
+    // DB order (so "frozen shrimp" prefers the shrimp line over crabmeat within 0306).
+    const qWords = description.toLowerCase().split(/\W+/).filter((w: string) => w.length > 2);
+    const scored = [...usitcRows].sort((a, b) => {
+      const score = (r: typeof a) => {
+        const d = (r.description ?? "").toLowerCase();
+        return qWords.reduce((n: number, w: string) => n + (d.includes(w) ? 1 : 0), 0);
+      };
+      return score(b) - score(a);
+    });
     const finalRanked = uniqueRanked.length > 0
       ? uniqueRanked
-      : usitcRows.slice(0, 2).map((r, i) => ({
+      : scored.slice(0, 2).map((r, i) => ({
           hts8: r.hts8,
           gri_rule: "1",
           reasoning: `Best USITC match for "${description}" under heading ${r.hts8.substring(0, 4)}`,

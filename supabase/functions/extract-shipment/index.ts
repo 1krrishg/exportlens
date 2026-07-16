@@ -116,26 +116,32 @@ async function extractFromPdf(base64Data: string): Promise<Record<string, unknow
   }
 
   // Second: extract structured fields from OCR text using Groq (fast, cheap)
-  const groqResp = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${GROQ_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: "llama-3.3-70b-versatile",
-      messages: [
-        {
-          role: "user",
-          content: `${EXTRACTION_PROMPT}\n\nDocument text:\n${documentText}`,
-        },
-      ],
-      max_tokens: 900,
-      temperature: 0.0,
-    }),
-  });
+  const GROQ_KEYS = [GROQ_API_KEY, Deno.env.get("GROQ_API_KEY_2") ?? ""].filter(Boolean);
+  let groqResp: Response | null = null;
+  for (const key of GROQ_KEYS) {
+    groqResp = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${key}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "llama-3.3-70b-versatile",
+        messages: [
+          {
+            role: "user",
+            content: `${EXTRACTION_PROMPT}\n\nDocument text:\n${documentText}`,
+          },
+        ],
+        max_tokens: 900,
+        temperature: 0.0,
+      }),
+    });
+    // Rotate to the fallback key only on rate-limit/auth failures
+    if (groqResp.ok || ![429, 401, 403].includes(groqResp.status)) break;
+  }
 
-  if (!groqResp.ok) throw new Error(`Groq extraction error: ${await groqResp.text()}`);
+  if (!groqResp?.ok) throw new Error(`Groq extraction error: ${await groqResp?.text()}`);
   const groqData = await groqResp.json();
   return parseJson(groqData.choices?.[0]?.message?.content ?? "{}");
 }
