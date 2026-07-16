@@ -451,7 +451,15 @@ serve(async (req) => {
     const usitcRows = await fetchUsitcCandidates(supabase, headings, description);
 
     // ── Phase 3: LLM ranks actual catalog entries ─────────────────────────────
-    const ranked = await rankCandidates(description, usitcRows);
+    // If Groq is down or rate-limited, degrade to lookup order instead of failing the
+    // whole request — the direct-lookup headings are already high-signal.
+    let ranked: Awaited<ReturnType<typeof rankCandidates>>;
+    try {
+      ranked = await rankCandidates(description, usitcRows);
+    } catch (rankErr) {
+      console.error("rankCandidates failed, using lookup-order fallback:", rankErr);
+      ranked = [];
+    }
 
     // ── Phase 4: Deduplicate and enrich with CBP rulings ─────────────────────
     const seenCodes = new Set<string>();

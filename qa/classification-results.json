@@ -1,0 +1,147 @@
+{
+  "turmeric powder": {
+    "expected": [
+      "0910"
+    ],
+    "got": "09103000",
+    "confidence": 99,
+    "seconds": 4.7,
+    "issues": []
+  },
+  "red chilli powder": {
+    "expected": [
+      "0904"
+    ],
+    "got": "09042276",
+    "confidence": 99,
+    "seconds": 2.6,
+    "issues": []
+  },
+  "cumin seeds": {
+    "expected": [
+      "0909"
+    ],
+    "got": "09093100",
+    "confidence": 99,
+    "seconds": 2.2,
+    "issues": []
+  },
+  "green cardamom": {
+    "expected": [
+      "0908"
+    ],
+    "got": "09083100",
+    "confidence": 99,
+    "seconds": 1.7,
+    "issues": []
+  },
+  "basmati rice": {
+    "expected": [
+      "1006"
+    ],
+    "got": null,
+    "confidence": null,
+    "seconds": 0.8,
+    "issues": [
+      "HTTP 500",
+      "no candidates returned"
+    ]
+  },
+  "frozen shrimp": {
+    "expected": [
+      "0306"
+    ],
+    "got": null,
+    "confidence": null,
+    "seconds": 1.2,
+    "issues": [
+      "HTTP 500",
+      "no candidates returned"
+    ]
+  },
+  "black tea": {
+    "expected": [
+      "0902"
+    ],
+    "got": null,
+    "confidence": null,
+    "seconds": 0.5,
+    "issues": [
+      "HTTP 500",
+      "no candidates returned"
+    ]
+  },
+  "cashew nuts": {
+    "expected": [
+      "0801"
+    ],
+    "got": null,
+    "confidence": null,
+    "seconds": 0.6,
+    "issues": [
+      "HTTP 500",
+      "no candidates returned"
+    ]
+  },
+  "guar gum powder": {
+    "expected": [
+      "1302"
+    ],
+    "got": null,
+    "confidence": null,
+    "seconds": 0.6,
+    "issues": [
+      "HTTP 500",
+      "no candidates returned"
+    ]
+  },
+  "mens cotton t-shirts": {
+    "expected": [
+      "6109"
+    ],
+    "got": null,
+    "confidence": null,
+    "seconds": 0.5,
+    "issues": [
+      "HTTP 500",
+      "no candidates returned"
+    ]
+  },
+  "ladies woven dresses": {
+    "expected": [
+      "6204"
+    ],
+    "got": null,
+    "confidence": null,
+    "seconds": 0.2,
+    "issues": [
+      "HTTP 500",
+      "no candidates returned"
+    ]
+  },
+  "cotton bed sheets": {
+    "expected": [
+      "6302"
+    ],
+    "got": null,
+    "confidence": null,
+    "seconds": 0.6,
+    "issues": [
+      "HTTP 500",
+      "no candidates returned"
+    ]
+  },
+  "hand knotted wool carpet": {
+    "expected": [
+      "5701",
+      "5703"
+    ],
+    "got": null,
+    "confidence": null,
+    "seconds": 0.5,
+    "issues": [
+      "HTTP 500",
+      "no candidates returned"
+    ]
+  }
+}

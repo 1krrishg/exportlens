@@ -77,25 +77,25 @@
     "product": "Chemicals (polycarboxylic acids)",
     "origin": "India",
     "tested_hs": "29170000",
-    "seconds": 4.2,
+    "seconds": 4.7,
     "effective_rate": 4.6,
     "extra_duty": 0,
-    "flags": [],
-    "issues": [
-      "zero regulatory flags"
-    ]
+    "flags": [
+      "EPA TSCA"
+    ],
+    "issues": []
   },
   "2933|all": {
     "product": "Pharmaceuticals (nitrogen compounds)",
     "origin": "India",
     "tested_hs": "29330000",
-    "seconds": 4.3,
+    "seconds": 4.5,
     "effective_rate": 2.2,
     "extra_duty": 0,
-    "flags": [],
-    "issues": [
-      "zero regulatory flags"
-    ]
+    "flags": [
+      "EPA TSCA"
+    ],
+    "issues": []
   },
   "3901|all": {
     "product": "Plastics (polyethylene)",
