@@ -1,0 +1,196 @@
+{
+  "0201|all": {
+    "product": "Beef",
+    "origin": "India",
+    "tested_hs": "02010000",
+    "seconds": 5.6,
+    "effective_rate": 17.8,
+    "extra_duty": 0,
+    "flags": [
+      "FDA FSMA",
+      "USDA FSIS"
+    ],
+    "issues": []
+  },
+  "0306|Vietnam": {
+    "product": "Shrimp/Prawns",
+    "origin": "Vietnam",
+    "tested_hs": "03060000",
+    "seconds": 9.2,
+    "effective_rate": 25.6,
+    "extra_duty": 50,
+    "flags": [
+      "FDA FSMA"
+    ],
+    "issues": []
+  },
+  "0306|India": {
+    "product": "Shrimp/Prawns",
+    "origin": "India",
+    "tested_hs": "03060000",
+    "seconds": 7.7,
+    "effective_rate": 10.6,
+    "extra_duty": 20,
+    "flags": [
+      "FDA FSMA"
+    ],
+    "issues": []
+  },
+  "0306|all": {
+    "product": "Lobster/Crustaceans",
+    "origin": "India",
+    "tested_hs": "03060000",
+    "seconds": 6.1,
+    "effective_rate": 10.6,
+    "extra_duty": 20,
+    "flags": [
+      "FDA FSMA"
+    ],
+    "issues": []
+  },
+  "0811|all": {
+    "product": "Cranberries",
+    "origin": "India",
+    "tested_hs": "08110000",
+    "seconds": 6.4,
+    "effective_rate": 8.2,
+    "extra_duty": 0,
+    "flags": [
+      "FDA FSMA",
+      "USDA APHIS"
+    ],
+    "issues": []
+  },
+  "0902|all": {
+    "product": "Tea",
+    "origin": "India",
+    "tested_hs": "09020000",
+    "seconds": 4.7,
+    "effective_rate": 1.6,
+    "extra_duty": 0,
+    "flags": [
+      "FDA FSMA"
+    ],
+    "issues": []
+  },
+  "2917|all": {
+    "product": "Chemicals (polycarboxylic acids)",
+    "origin": "India",
+    "tested_hs": "29170000",
+    "seconds": 4.2,
+    "effective_rate": 4.6,
+    "extra_duty": 0,
+    "flags": [],
+    "issues": [
+      "zero regulatory flags"
+    ]
+  },
+  "2933|all": {
+    "product": "Pharmaceuticals (nitrogen compounds)",
+    "origin": "India",
+    "tested_hs": "29330000",
+    "seconds": 4.3,
+    "effective_rate": 2.2,
+    "extra_duty": 0,
+    "flags": [],
+    "issues": [
+      "zero regulatory flags"
+    ]
+  },
+  "3901|all": {
+    "product": "Plastics (polyethylene)",
+    "origin": "India",
+    "tested_hs": "39010000",
+    "seconds": 8.5,
+    "effective_rate": 5.1,
+    "extra_duty": 0,
+    "flags": [
+      "EPA TSCA"
+    ],
+    "issues": []
+  },
+  "3907|India": {
+    "product": "PET Resin",
+    "origin": "India",
+    "tested_hs": "39070000",
+    "seconds": 5.3,
+    "effective_rate": 17.7,
+    "extra_duty": 28,
+    "flags": [
+      "EPA TSCA"
+    ],
+    "issues": []
+  },
+  "4011|China": {
+    "product": "Pneumatic Tires",
+    "origin": "China",
+    "tested_hs": "40110000",
+    "seconds": 6.2,
+    "effective_rate": 77.5,
+    "extra_duty": 152,
+    "flags": [
+      "DOT NHTSA"
+    ],
+    "issues": []
+  },
+  "4011|India": {
+    "product": "Off-the-Road Tires",
+    "origin": "India",
+    "tested_hs": "40110000",
+    "seconds": 6,
+    "effective_rate": 10.5,
+    "extra_duty": 18,
+    "flags": [
+      "DOT NHTSA"
+    ],
+    "issues": []
+  },
+  "4011|all": {
+    "product": "Pneumatic Tires",
+    "origin": "India",
+    "tested_hs": "40110000",
+    "seconds": 4.3,
+    "effective_rate": 10.5,
+    "extra_duty": 18,
+    "flags": [
+      "DOT NHTSA"
+    ],
+    "issues": []
+  },
+  "6109|all": {
+    "product": "T-shirts/Knit Apparel",
+    "origin": "India",
+    "tested_hs": "61090000",
+    "seconds": 5.5,
+    "effective_rate": 15.3,
+    "extra_duty": 0,
+    "flags": [
+      "CPSC Flammability + FTC Textile Labeling Required"
+    ],
+    "issues": []
+  },
+  "6110|all": {
+    "product": "Sweaters/Jerseys",
+    "origin": "India",
+    "tested_hs": "61100000",
+    "seconds": 5.3,
+    "effective_rate": 11.9,
+    "extra_duty": 0,
+    "flags": [
+      "CPSC Flammability + FTC Textile Labeling Required"
+    ],
+    "issues": []
+  },
+  "6203|all": {
+    "product": "Men's Suits/Trousers",
+    "origin": "India",
+    "tested_hs": "62030000",
+    "seconds": 4.6,
+    "effective_rate": 12.8,
+    "extra_duty": 0,
+    "flags": [
+      "CPSC Flammability + FTC Textile Labeling Required"
+    ],
+    "issues": []
+  }
+}

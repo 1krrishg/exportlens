@@ -363,6 +363,38 @@ function computeRegulatoryFlags(
       });
     }
 
+    // DOT/NHTSA — Tire safety standards
+    if (["4011", "4012", "4013"].includes(hs4)) {
+      flags.push({
+        type: "COMPLIANCE",
+        title: "DOT NHTSA — Tire Safety Standards (FMVSS 139)",
+        detail: "Tires must comply with Federal Motor Vehicle Safety Standards and bear a DOT symbol and Tire Identification Number (TIN) molded into the sidewall. The manufacturer must be registered with NHTSA and have a US agent. An HS-7 declaration is filed at entry. Tires without the DOT marking are refused entry — the marking cannot be added after manufacture.",
+        authority: "49 CFR Part 571.139 (FMVSS) · 49 CFR Part 574 (TIN) · NHTSA HS-7 Declaration",
+      });
+    }
+
+    // CPSC/FTC — Wearing apparel flammability + textile labeling (all apparel, not just children's)
+    const apparelChapters = ["61", "62"];
+    if (apparelChapters.includes(hs2) || hs2 === "63") {
+      flags.push({
+        type: "COMPLIANCE",
+        title: "CPSC Flammability + FTC Textile Labeling Required",
+        detail: "Wearing apparel and textiles must meet the general flammability standard (16 CFR 1610) — most fabrics pass, but sheer/brushed fabrics (chiffon, fleece nap) can fail; a General Certificate of Conformity is required. Labels must state fiber content, country of origin, and the manufacturer or RN number (Textile Fiber Products Identification Act), plus care instructions (16 CFR 423). Children's sleepwear has stricter standards (16 CFR 1615/1616). Mislabeled fiber content is a common CBP hold reason.",
+        authority: "16 CFR 1610 (Flammable Fabrics Act) · 15 USC 70 (Textile Act) · 16 CFR 423",
+      });
+    }
+
+    // EPA — TSCA certification for chemical substances
+    const chemChapters = ["28", "29", "32", "34", "38", "39"];
+    if (chemChapters.includes(hs2)) {
+      flags.push({
+        type: "COMPLIANCE",
+        title: "EPA TSCA — Chemical Import Certification Required",
+        detail: "Chemical substances entering the US require a TSCA certification at customs: either a positive certification (all substances are on the TSCA Inventory or exempt) or a negative certification (not subject to TSCA, e.g. pesticides regulated by FIFRA). The importer files the certification with CBP at entry. Substances not on the TSCA Inventory require a Premanufacture Notice (PMN) to EPA 90 days before import. Non-certified chemical shipments are refused entry.",
+        authority: "15 USC 2612 (TSCA Section 13) · 19 CFR 12.118–12.127 · 40 CFR Part 707",
+      });
+    }
+
     // USDA/APHIS — Plants & Agricultural Products
     if (["06","07","08","10","11","12","13","14"].includes(hs2)) {
       flags.push({
@@ -916,13 +948,25 @@ ${context}`,
       retaliation_probability: retaliation_probability_pct,
       rate_history: rateHistory,
       alternative_markets: bestAlts,
-      volatility_stats: volRow ? {
-        volatility: volRow.volatility,
-        max_year_jump: Math.min((volRow.max_year_jump ?? 0) * 100, 150),
-        max_jump_year: volRow.max_jump_year,
-        avg_rate: Math.min((volRow.avg_rate ?? 0) * 100, 150),
-        max_rate: Math.min((volRow.max_rate ?? 0) * 100, 150),
-      } : null,
+      // hts_volatility has zeroed/corrupt rows for many products; when it disagrees with
+      // rate_history (the sparkline's source), derive avg/peak from rate_history so the
+      // header numbers always match the chart.
+      volatility_stats: (() => {
+        const histRates = rateHistory.map((r: { rate: number }) => r.rate);
+        const histAvg = histRates.length ? histRates.reduce((a: number, b: number) => a + b, 0) / histRates.length : 0;
+        const histMax = histRates.length ? Math.max(...histRates) : 0;
+        const volAvg = Math.min((volRow?.avg_rate ?? 0) * 100, 150);
+        const volMax = Math.min((volRow?.max_rate ?? 0) * 100, 150);
+        const useHistory = histRates.length > 0 && volMax === 0 && histMax > 0;
+        if (!volRow && !useHistory) return null;
+        return {
+          volatility: volRow?.volatility ?? 0,
+          max_year_jump: Math.min((volRow?.max_year_jump ?? 0) * 100, 150),
+          max_jump_year: volRow?.max_jump_year ?? null,
+          avg_rate: useHistory ? histAvg : volAvg,
+          max_rate: useHistory ? histMax : volMax,
+        };
+      })(),
       regulatory_flags,
       risk_summary: aiOutput.risk_summary,
       recommendation: aiOutput.recommendation,
