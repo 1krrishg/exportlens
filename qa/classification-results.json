@@ -39,109 +39,191 @@
     "expected": [
       "1006"
     ],
-    "got": null,
-    "confidence": null,
-    "seconds": 0.8,
-    "issues": [
-      "HTTP 500",
-      "no candidates returned"
-    ]
+    "got": "10061000",
+    "confidence": 60,
+    "seconds": 1.3,
+    "issues": []
   },
   "frozen shrimp": {
     "expected": [
       "0306"
     ],
-    "got": null,
-    "confidence": null,
-    "seconds": 1.2,
-    "issues": [
-      "HTTP 500",
-      "no candidates returned"
-    ]
+    "got": "03061420",
+    "confidence": 68,
+    "seconds": 1.5,
+    "issues": []
   },
   "black tea": {
     "expected": [
       "0902"
     ],
-    "got": null,
-    "confidence": null,
-    "seconds": 0.5,
-    "issues": [
-      "HTTP 500",
-      "no candidates returned"
-    ]
+    "got": "09021010",
+    "confidence": 68,
+    "seconds": 1,
+    "issues": []
   },
   "cashew nuts": {
     "expected": [
       "0801"
     ],
-    "got": null,
-    "confidence": null,
-    "seconds": 0.6,
-    "issues": [
-      "HTTP 500",
-      "no candidates returned"
-    ]
+    "got": "08011100",
+    "confidence": 68,
+    "seconds": 1.8,
+    "issues": []
   },
   "guar gum powder": {
     "expected": [
       "1302"
     ],
-    "got": null,
-    "confidence": null,
-    "seconds": 0.6,
-    "issues": [
-      "HTTP 500",
-      "no candidates returned"
-    ]
+    "got": "13021100",
+    "confidence": 60,
+    "seconds": 1.9,
+    "issues": []
   },
   "mens cotton t-shirts": {
     "expected": [
       "6109"
     ],
-    "got": null,
-    "confidence": null,
-    "seconds": 0.5,
-    "issues": [
-      "HTTP 500",
-      "no candidates returned"
-    ]
+    "got": "61091000",
+    "confidence": 68,
+    "seconds": 3,
+    "issues": []
   },
   "ladies woven dresses": {
     "expected": [
       "6204"
     ],
-    "got": null,
-    "confidence": null,
-    "seconds": 0.2,
-    "issues": [
-      "HTTP 500",
-      "no candidates returned"
-    ]
+    "got": "62045320",
+    "confidence": 60,
+    "seconds": 2.3,
+    "issues": []
   },
   "cotton bed sheets": {
     "expected": [
       "6302"
     ],
-    "got": null,
-    "confidence": null,
-    "seconds": 0.6,
-    "issues": [
-      "HTTP 500",
-      "no candidates returned"
-    ]
+    "got": "63025910",
+    "confidence": 60,
+    "seconds": 1.1,
+    "issues": []
   },
   "hand knotted wool carpet": {
     "expected": [
       "5701",
       "5703"
     ],
-    "got": null,
-    "confidence": null,
-    "seconds": 0.5,
-    "issues": [
-      "HTTP 500",
-      "no candidates returned"
-    ]
+    "got": "57011013",
+    "confidence": 60,
+    "seconds": 1.4,
+    "issues": []
+  },
+  "cotton yarn": {
+    "expected": [
+      "5205"
+    ],
+    "got": "52054200",
+    "confidence": 60,
+    "seconds": 1,
+    "issues": []
+  },
+  "mens leather shoes": {
+    "expected": [
+      "6403"
+    ],
+    "got": "64039975",
+    "confidence": 60,
+    "seconds": 1,
+    "issues": []
+  },
+  "leather handbags": {
+    "expected": [
+      "4202"
+    ],
+    "got": "42021100",
+    "confidence": 60,
+    "seconds": 1,
+    "issues": []
+  },
+  "gold jewelry": {
+    "expected": [
+      "7113"
+    ],
+    "got": "71131930",
+    "confidence": 60,
+    "seconds": 1,
+    "issues": []
+  },
+  "pharmaceutical tablets": {
+    "expected": [
+      "3004"
+    ],
+    "got": "30041010",
+    "confidence": 60,
+    "seconds": 1.3,
+    "issues": []
+  },
+  "ayurvedic herbal supplement": {
+    "expected": [
+      "3004",
+      "2106"
+    ],
+    "got": "21061000",
+    "confidence": 60,
+    "seconds": 1.1,
+    "issues": []
+  },
+  "welded steel pipes": {
+    "expected": [
+      "7306"
+    ],
+    "got": "73061100",
+    "confidence": 60,
+    "seconds": 1.6,
+    "issues": []
+  },
+  "stainless steel flanges": {
+    "expected": [
+      "7307"
+    ],
+    "got": "73071100",
+    "confidence": 68,
+    "seconds": 1.2,
+    "issues": []
+  },
+  "brake pads auto parts": {
+    "expected": [
+      "8708"
+    ],
+    "got": "87089981",
+    "confidence": 60,
+    "seconds": 1,
+    "issues": []
+  },
+  "ceramic floor tiles": {
+    "expected": [
+      "6907"
+    ],
+    "got": "69072110",
+    "confidence": 60,
+    "seconds": 1.3,
+    "issues": []
+  },
+  "wooden handicrafts": {
+    "expected": [
+      "4420"
+    ],
+    "got": "44201100",
+    "confidence": 60,
+    "seconds": 1,
+    "issues": []
+  },
+  "brass statue handicrafts": {
+    "expected": [
+      "8306"
+    ],
+    "got": "83061000",
+    "confidence": 60,
+    "seconds": 1.3,
+    "issues": []
   }
 }

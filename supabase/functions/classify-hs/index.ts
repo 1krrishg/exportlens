@@ -123,6 +123,11 @@ const DIRECT_LOOKUP: Record<string, string[]> = {
   "bed linen": ["6302"], "bed sheets": ["6302"], bedsheet: ["6302"], bedsheets: ["6302"], towel: ["6302"], towels: ["6302"],
   carpet: ["5701", "5703"], carpets: ["5701", "5703"], rug: ["5701", "5703"], rugs: ["5701", "5703"], durrie: ["5702"],
   "cotton yarn": ["5205"], yarn: ["5205"],
+  "t-shirt": ["6109"], "t-shirts": ["6109"], tshirts: ["6109"], tee: ["6109"], tees: ["6109"],
+  "steel pipe": ["7306"], "steel pipes": ["7306"], "welded pipe": ["7306"], "welded pipes": ["7306"], pipe: ["7306"], pipes: ["7306"],
+  flange: ["7307"], flanges: ["7307"], "pipe fittings": ["7307"],
+  "brake pads": ["8708"], "brake pad": ["8708"], brake: ["8708"], brakes: ["8708"],
+  "brass statue": ["8306"], "brass statues": ["8306"], "metal statue": ["8306"], statuette: ["8306", "4420"],
   handicraft: ["4420", "8306"], handicrafts: ["4420", "8306"],
   "brass handicrafts": ["8306"], brass: ["8306", "7419"], "wood carving": ["4420"],
   "leather bag": ["4202"], "leather bags": ["4202"], "leather wallet": ["4202"], handbag: ["4202"], handbags: ["4202"],
@@ -323,7 +328,7 @@ async function identifyHeadings(description: string): Promise<string[]> {
   // Keys too generic to trust inside longer phrases — exact-match only.
   // "coconut oil" must NOT hit oil→crude petroleum; "gas grill" must NOT hit gas→LNG;
   // "mobile home" must NOT hit mobile→smartphones; "hard hat" must NOT hit hard→computers.
-  const EXACT_ONLY = new Set(["oil", "gas", "hard", "switch", "mobile", "parts", "electric", "device", "container", "panel", "glove", "mask", "engine", "memory", "chip", "chips", "table", "suit", "yarn", "brass", "ginger", "pepper"]);
+  const EXACT_ONLY = new Set(["oil", "gas", "hard", "switch", "mobile", "parts", "electric", "device", "container", "panel", "glove", "mask", "engine", "memory", "chip", "chips", "table", "suit", "yarn", "brass", "ginger", "pepper", "pipe", "pipes"]);
   if (DIRECT_LOOKUP[lower]) return DIRECT_LOOKUP[lower];
 
   // Sort keys by length descending so longer/more-specific keys match first
