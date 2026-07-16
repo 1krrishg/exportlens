@@ -445,7 +445,15 @@ serve(async (req) => {
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
     // ── Phase 1: Identify likely HS4 headings ─────────────────────────────────
-    const headings = await identifyHeadings(description);
+    // If the LLM heading-identifier is down (rate limit/outage), continue with no
+    // headings — phase 2 falls back to keyword search over the USITC catalog.
+    let headings: string[];
+    try {
+      headings = await identifyHeadings(description);
+    } catch (headingErr) {
+      console.error("identifyHeadings failed, relying on keyword fallback:", headingErr);
+      headings = [];
+    }
 
     // ── Phase 2: Fetch actual USITC catalog entries for those headings ────────
     const usitcRows = await fetchUsitcCandidates(supabase, headings, description);
