@@ -203,6 +203,19 @@ function computeRegulatoryFlags(
 ): RegulatoryFlag[] {
   const flags: RegulatoryFlag[] = [];
 
+  // ── US reciprocal/Section 122 tariff on India — rate is actively unstable ──
+  // Deliberately NOT hardcoded as a duty row: it has moved from 25% (Aug 2025 Russian-oil
+  // surcharge) to 50%, back down through several revisions, and is under active
+  // renegotiation. Any specific number here would be stale within days. Warn instead of guess.
+  if (originCountry === "India" && destinationCountry === "United States") {
+    flags.push({
+      type: "WARNING",
+      title: "US Reciprocal Tariff on India — Rate Is Actively Changing",
+      detail: "Since August 2025 the US has applied an additional reciprocal/Section 122 tariff on Indian goods on top of the MFN duty shown here, layered with a since-adjusted Russian-oil-purchase surcharge. The combined rate has moved repeatedly — do not quote a buyer off this tool's MFN number alone. Confirm the current effective rate with your customs broker or CBP's latest notice before finalizing any price, especially for shipments planned more than a few weeks out.",
+      authority: "IEEPA / Section 122 tariff actions on India (2025–2026, subject to ongoing revision)",
+    });
+  }
+
   // ── UFLPA — Xinjiang Forced Labor Prevention Act ──
   if (
     originCountry === "China" &&
