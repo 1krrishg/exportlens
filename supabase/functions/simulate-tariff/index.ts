@@ -909,7 +909,8 @@ Alternative sales markets (different BUYERS in different countries — goods kee
       signal: AbortSignal.timeout(25000),
       headers: { "Authorization": `Bearer ${groqKey}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model: "openai/gpt-oss-120b",
+        reasoning_effort: "low",
         messages: [
           {
             role: "system",
@@ -938,7 +939,7 @@ Data:
 ${context}`,
           },
         ],
-        max_tokens: 500,
+        max_tokens: 1500,
         temperature: 0.25,
       }),
     });

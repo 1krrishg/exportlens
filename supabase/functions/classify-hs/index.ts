@@ -247,7 +247,8 @@ async function callGroq(messages: { role: string; content: string }[], maxTokens
       method: "POST",
       headers: { "Authorization": `Bearer ${key}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model: "openai/gpt-oss-120b",
+        reasoning_effort: "low",
         temperature: 0.0,
         max_tokens: maxTokens,
         messages,
@@ -302,7 +303,7 @@ async function fetchUsitcCandidates(
       .from("hts_catalog")
       .select("hts8, description, mfn_rate")
       .like("hts8", `${hs4}%`)
-      .limit(20);
+      .limit(15);
 
     if (!headingRows || headingRows.length === 0) return;
 
@@ -349,28 +350,34 @@ async function identifyHeadings(description: string): Promise<string[]> {
   const EXACT_ONLY = new Set(["oil", "gas", "hard", "switch", "mobile", "parts", "electric", "device", "container", "panel", "glove", "mask", "engine", "memory", "chip", "chips", "table", "suit", "yarn", "brass", "ginger", "pepper", "pipe", "pipes"]);
   if (DIRECT_LOOKUP[lower]) return DIRECT_LOOKUP[lower];
 
-  // Sort keys by length descending so longer/more-specific keys match first
-  const sortedKeys = Object.keys(DIRECT_LOOKUP)
-    .filter(k => !EXACT_ONLY.has(k))
-    .sort((a, b) => b.length - a.length);
-  for (const key of sortedKeys) {
-    if (lower.startsWith(key + " ") || lower.endsWith(" " + key) || lower.includes(" " + key + " ")) {
-      return DIRECT_LOOKUP[key];
-    }
-  }
-  // Try 2-word combos, then single words
-  const words = lower.split(/\s+/);
-  for (let i = 0; i < words.length - 1; i++) {
-    const bigram = `${words[i]} ${words[i + 1]}`;
-    if (DIRECT_LOOKUP[bigram] && !EXACT_ONLY.has(bigram)) return DIRECT_LOOKUP[bigram];
-  }
-  for (const word of words) {
-    if (DIRECT_LOOKUP[word] && !EXACT_ONLY.has(word)) {
-      return DIRECT_LOOKUP[word];
-    }
-  }
+  // Partial lookup matches are HINTS, not answers: a single word like "leather" in
+  // "leather laptop bag" must not override the product (bag → 4202). Collect hints from
+  // every matching key (generic words included, e.g. "brass" in "brass decorative vase"),
+  // then merge them with the LLM's headings so the ranker sees both.
+  const words = lower.split(/\W+/).filter(Boolean);
+  const padded = ` ${words.join(" ")} `;
+  const hintKeys = Object.keys(DIRECT_LOOKUP)
+    .filter(k => padded.includes(` ${k} `))
+    .sort((a, b) => b.split(" ").length - a.split(" ").length || b.length - a.length);
+  const hints: string[] = [];
+  for (const k of hintKeys) for (const h of DIRECT_LOOKUP[k]) if (!hints.includes(h)) hints.push(h);
+  // A multi-word phrase match (e.g. "leather bag") is specific enough to trust on its own.
+  const phraseHit = hintKeys.find(k => k.includes(" ") && !EXACT_ONLY.has(k));
 
-  // Fall back to LLM for heading identification only
+  let llmHeadings: string[] = [];
+  try {
+    llmHeadings = await identifyHeadingsLlm(description);
+  } catch (err) {
+    if (hints.length === 0) throw err;
+    console.error("LLM heading step failed, using lookup hints only:", err);
+  }
+  const merged: string[] = [];
+  const order = phraseHit ? [...DIRECT_LOOKUP[phraseHit], ...llmHeadings, ...hints] : [...llmHeadings, ...hints];
+  for (const h of order) if (!merged.includes(h)) merged.push(h);
+  return merged.slice(0, 4);
+}
+
+async function identifyHeadingsLlm(description: string): Promise<string[]> {
   const raw = await callGroq([
     {
       role: "system",
@@ -382,11 +389,16 @@ Return ONLY a JSON array of 4-digit heading codes as strings. Maximum 3 headings
 - "laptop charger" → ["8504"]
 - "leather dress shoes" → ["6403"]
 - "soybeans" → ["1201"]
+- "leather laptop bag" → ["4202"]
+- "handmade brass decorative vase" → ["8306", "7418"]
+- "ceramic flower vase" → ["6913", "6912"]
+
+The MATERIAL named in the description decides the chapter for decorative and household articles (brass/copper → 7418 or 8306, iron/steel → 7323 or 8306, wood → 4420, glass → 7013, ceramic → 6912/6913). Bags, cases and wallets of any material go to 4202 even when "leather" or "laptop" appears.
 
 Return ONLY the JSON array, nothing else.`,
     },
     { role: "user", content: `Product: "${description}"` },
-  ], 200);
+  ], 800);
 
   try {
     const parsed = JSON.parse(raw.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim());
@@ -414,7 +426,7 @@ async function rankCandidates(
 
   // Build catalog list for LLM
   const catalogText = usitcRows
-    .slice(0, 30) // cap to avoid token overflow
+    .slice(0, 60) // cap to avoid token overflow (4 headings x ~15 rows)
     .map(r => `${r.hts8} — ${r.description} (MFN: ${r.mfn_rate !== null ? (r.mfn_rate * 100).toFixed(1) + "%" : "N/A"})`)
     .join("\n");
 
@@ -447,7 +459,7 @@ Return ONLY the JSON array. No markdown. No explanation.`,
       role: "user",
       content: `Product: "${description}"\n\nAvailable HTSUS catalog entries:\n${catalogText}`,
     },
-  ], 1000);
+  ], 3000);
 
   const parsed = parseJson(raw);
   if (!Array.isArray(parsed)) return [];
@@ -494,6 +506,8 @@ serve(async (req) => {
 
     // ── Phase 4: Deduplicate and enrich with CBP rulings ─────────────────────
     const seenCodes = new Set<string>();
+    // Models often format codes as "7113.11.20" — normalise to the catalog's 8 bare digits.
+    for (const c of ranked) if (c && c.hts8 != null) c.hts8 = String(c.hts8).replace(/\D/g, "").substring(0, 8);
     const uniqueRanked = ranked.filter(c => {
       if (!c.hts8 || seenCodes.has(c.hts8)) return false;
       // Verify the code actually exists in our USITC data
@@ -519,8 +533,8 @@ serve(async (req) => {
       : scored.slice(0, 2).map((r, i) => ({
           hts8: r.hts8,
           gri_rule: "1",
-          reasoning: `Best USITC match for "${description}" under heading ${r.hts8.substring(0, 4)}`,
-          confidence: i === 0 ? 60 : 40,
+          reasoning: `Low-confidence keyword match under heading ${r.hts8.substring(0, 4)} — the AI could not confirm a fit. Add material and use (e.g. "brass decorative vase") or check with a customs broker.`,
+          confidence: i === 0 ? 30 : 20,
           disqualified_headings: "",
         }));
 

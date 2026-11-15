@@ -318,7 +318,8 @@ async function extractRatesFromFedRegDoc(docTitle: string, docAbstract: string):
       method: "POST",
       headers: { "Authorization": `Bearer ${nextGroqKey()}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model: "openai/gpt-oss-120b",
+        reasoning_effort: "low",
         messages: [{
           role: "user",
           content: `Does this Federal Register document announce a specific tariff rate change on US exports?
@@ -330,7 +331,7 @@ If no specific rate is mentioned, return: null
 
 Return only JSON or null, nothing else.`,
         }],
-        max_tokens: 100,
+        max_tokens: 600,
         temperature: 0.0,
       }),
     });
