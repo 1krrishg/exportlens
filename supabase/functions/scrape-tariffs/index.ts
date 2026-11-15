@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { guard, hit } from "../_shared/guard.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -350,8 +351,37 @@ Return only JSON or null, nothing else.`,
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
+  const blocked = await guard(req, "scrape-tariffs", [
+    { scope: "ip", max: 10, windowSeconds: 3600 },
+  ]);
+  if (blocked) return blocked;
+
   try {
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+
+    // Cooldown: a full scrape fans out to dozens of WTO calls and up to 15 Groq
+    // calls, and the homepage "refresh" button is public. Allow one real run per
+    // 2-hour window; everyone else gets the latest completed run instantly.
+    const mayRun = await hit("scrape-tariffs:run", 1, 7200);
+    if (!mayRun) {
+      const { data: last } = await supabase
+        .from("scrape_log")
+        .select("scraped_at, mentions_found, raw_sample")
+        .order("scraped_at", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+      const alerts = Number(/Regulatory alerts: (\d+)/.exec(last?.raw_sample ?? "")?.[1] ?? 0);
+      return new Response(JSON.stringify({
+        success: true,
+        cached: true,
+        message: "Rates were refreshed recently — showing the latest run.",
+        scraped_at: last?.scraped_at ?? null,
+        total_upserted: last?.mentions_found ?? 0,
+        regulatory_alerts: alerts,
+        rejected: [],
+      }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
+
     const runStart = new Date().toISOString();
     let totalUpserted = 0;
 

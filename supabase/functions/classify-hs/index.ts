@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { guard } from "../_shared/guard.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -469,8 +470,22 @@ Return ONLY the JSON array. No markdown. No explanation.`,
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
+  // 2 Groq calls per classification; 350/day global keeps us inside 2 free Groq keys.
+  const blocked = await guard(req, "classify-hs", [
+    { scope: "ip", max: 8, windowSeconds: 600 },
+    { scope: "ip", max: 40, windowSeconds: 86400 },
+    { scope: "global", max: 350, windowSeconds: 86400 },
+  ], { maxBodyBytes: 5_000 });
+  if (blocked) return blocked;
+
   try {
-    const { description } = await req.json();
+    const body = await req.json();
+    const description: string = typeof body?.description === "string" ? body.description.replace(/\s+/g, " ").trim() : "";
+    if (description.length > 300) {
+      return new Response(JSON.stringify({ error: "Please describe the product in 300 characters or fewer." }), {
+        status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
     if (!description || description.trim().length < 2) {
       return new Response(JSON.stringify({ error: "description required" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },

@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { guard } from "../_shared/guard.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -487,19 +488,6 @@ async function getBilateralTradeFlow(originCountry: string, destCountry: string,
   } catch { return null; }
 }
 
-// Simple in-memory rate limiter: 10 requests per minute per IP
-const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const entry = rateLimitMap.get(ip);
-  if (!entry || now > entry.resetAt) {
-    rateLimitMap.set(ip, { count: 1, resetAt: now + 60_000 });
-    return false;
-  }
-  if (entry.count >= 10) return true;
-  entry.count++;
-  return false;
-}
 
 // All countries we know about for alternative routing
 const ALL_COUNTRIES = [
@@ -520,16 +508,22 @@ const ALL_COUNTRIES = [
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
-  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-  if (isRateLimited(ip)) {
-    return new Response(JSON.stringify({ error: "Too many requests. Please wait a minute." }), {
-      status: 429,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
-  }
+  // Shared Postgres-backed limiter (the old in-memory one reset on every cold start).
+  // Budget: 1 Groq call per simulation; 500/day global keeps us inside 2 free Groq keys.
+  const blocked = await guard(req, "simulate-tariff", [
+    { scope: "ip", max: 10, windowSeconds: 600 },
+    { scope: "ip", max: 60, windowSeconds: 86400 },
+    { scope: "global", max: 500, windowSeconds: 86400 },
+  ], { maxBodyBytes: 20_000 });
+  if (blocked) return blocked;
 
   try {
-    const { hs_code, destination_country, origin_country, shipment_value, product_name, trade_mode, incoterms, quantity } = await req.json();
+    const body = await req.json();
+    const { hs_code, destination_country, origin_country, shipment_value, trade_mode, incoterms, quantity } = body;
+    // product_name is echoed into the AI prompt and the response — cap it so it
+    // can't be used to smuggle long instructions or abuse text into the output.
+    const product_name: string | undefined =
+      typeof body.product_name === "string" ? body.product_name.replace(/\s+/g, " ").trim().slice(0, 100) : undefined;
     if (typeof hs_code !== "string" || hs_code.length < 4 || !destination_country || typeof shipment_value !== "number" || shipment_value <= 0) {
       return new Response(JSON.stringify({ error: "hs_code (min 4 digits), destination_country, and positive shipment_value are required" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },

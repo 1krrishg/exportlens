@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { guard } from "../_shared/guard.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -164,11 +165,26 @@ function parseJson(raw: string): Record<string, unknown> {
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
+  // Mistral OCR + 1 Groq call per upload — the most expensive endpoint, so the tightest limits.
+  const blocked = await guard(req, "extract-shipment", [
+    { scope: "ip", max: 4, windowSeconds: 600 },
+    { scope: "ip", max: 15, windowSeconds: 86400 },
+    { scope: "global", max: 120, windowSeconds: 86400 },
+  ], { maxBodyBytes: 14_000_000 });
+  if (blocked) return blocked;
+
   try {
     const { file_base64, file_name, file_type } = await req.json();
-    if (!file_base64) throw new Error("No file provided");
+    if (!file_base64 || typeof file_base64 !== "string") throw new Error("No file provided");
 
     const base64Data = file_base64.includes(",") ? file_base64.split(",")[1] : file_base64;
+    // ~10 MB file limit (base64 is ~4/3 the size). Checked here too because
+    // chunked uploads don't send a Content-Length header.
+    if (base64Data.length > 13_500_000) {
+      return new Response(JSON.stringify({ error: "File too large (max 10 MB)." }), {
+        status: 413, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
     const isImage = file_type?.startsWith("image/") || /\.(jpg|jpeg|png|webp)$/i.test(file_name ?? "");
     const mediaType = file_type?.startsWith("image/") ? file_type : "image/jpeg";
 
