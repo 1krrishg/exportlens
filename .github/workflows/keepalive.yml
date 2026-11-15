@@ -1,0 +1,41 @@
+name: Keep Supabase awake
+
+# Free Supabase projects pause after ~7 days without activity, which takes
+# ExportLens, TariffLens and Ability offline. This runs one tiny read query
+# against each project every day.
+#
+# The keys below are the public (publishable/anon) keys already shipped in
+# each site's frontend bundle -- they can only read public tables.
+
+on:
+  schedule:
+    - cron: "17 3 * * *" # daily, 03:17 UTC
+  workflow_dispatch: # "Run workflow" button in the Actions tab
+
+permissions:
+  actions: write # needed for the re-enable step below
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping ExportLens / TariffLens database (qszregcopfbiavgwvfip)
+        run: |
+          curl -fsS --retry 3 --retry-delay 30 --max-time 60 \
+            "https://qszregcopfbiavgwvfip.supabase.co/rest/v1/hts_catalog?select=hts8&limit=1" \
+            -H "apikey: sb_publishable_trFYKNSMpJy8n28PZst2Fw_hPkPwcPd"
+
+      - name: Ping Ability database (owxvgpreetupeallsxoa)
+        run: |
+          curl -fsS --retry 3 --retry-delay 30 --max-time 60 \
+            "https://owxvgpreetupeallsxoa.supabase.co/rest/v1/keepalive?select=id&limit=1" \
+            -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im93eHZncHJlZXR1cGVhbGxzeG9hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2MjY3ODAsImV4cCI6MjEwMDIwMjc4MH0.8_PPm63OUEgUDJ57mipeybsEZdfUvH-6ZK95th3L2pI"
+
+      # GitHub disables scheduled workflows after 60 days with no commits
+      # (that is what silently killed the hourly scrape in Sept 2026).
+      # Re-enabling via the API resets that timer, so this job never dies.
+      - name: Keep this workflow from being auto-disabled
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/keepalive.yml/enable"
