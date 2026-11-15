@@ -1,9 +1,14 @@
 name: Deploy Supabase Functions
 
+# Automatic deploy-on-push is switched off: the SUPABASE_PROJECT_ID and
+# SUPABASE_ACCESS_TOKEN repo secrets were never set, so every push failed.
+# Functions are deployed with the Supabase CLI instead. To turn it back on,
+# add those two secrets and restore the push trigger below.
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
 
 jobs:
   deploy:
